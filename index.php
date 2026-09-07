@@ -6,7 +6,13 @@
     <title>Valorant</title>
 </head>
 <body>
-  nokkefår
+  <?php include 'header.php'; ?>
+
+<main>
+    <h1>Velkommen til AnimeForum</h1>
+</main>
+
+<?php include 'footer.php'; ?>
 
     
 </body>
