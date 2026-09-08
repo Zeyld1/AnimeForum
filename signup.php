@@ -1,8 +1,7 @@
 <?php
 include 'database.php';
-
+// det betyder Hvis formularen er blevet send, så henter vi det, brugeren skrev 
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
-  // det betyder Hvis formularen er blevet send, så henter vi det, brugeren skrev  
 {
     // Vi oprette foresklige variabler som brugere kan indtæste.
     $username = $_POST["username"];
@@ -37,7 +36,7 @@ Når brugeren trykker på "Sign up", bliver værdierne fra inputfelterne
 sendt til PHP, hvor de kan hentes med $_POST.
 -->
 <form method="POST">
-    // vi definere metoden POST.
+    // vi definere metoden POST. 
 
     <input type="text" name="username" placeholder="Username">
     <br><br>
