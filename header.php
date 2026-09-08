@@ -3,7 +3,7 @@
         <h1>Anime Forum</h1>
     </div>
 
-    <nav>
+    <nav class ="menu-tekst">
         <a href="index.php">Forside</a>
         <a href="forum.php">Forum</a>
         <a href="login.php">Login</a>
