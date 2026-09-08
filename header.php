@@ -1,7 +1,6 @@
 <header class="top-header">
-    <div class="logo">
+    
         <h1>Anime Forum</h1>
-    </div>
 
     <nav class ="menu-tekst">
         <a href="index.php">Forside</a>
