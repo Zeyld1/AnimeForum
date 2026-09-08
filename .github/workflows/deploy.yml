@@ -1,0 +1,22 @@
+name: Deploy til Simply
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Hent repository
+        uses: actions/checkout@v4
+
+      - name: Upload til Simply
+        uses: SamKirkland/FTP-Deploy-Action@4
+        with:
+          server: ftp.simply.com
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          server-dir: /public_html/
