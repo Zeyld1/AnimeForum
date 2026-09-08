@@ -53,3 +53,12 @@ body {
     /* Ændrer skrifttypen */
     font-family: Arial, sans-serif;
 }
+
+main,
+footer {
+    padding-left: 40px;
+}
+
+main {
+    padding-left: 40px;
+}
