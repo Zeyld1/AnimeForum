@@ -1,6 +1,7 @@
 <?php
+include 'header.php'
 include 'database.php';
-// det betyder Hvis formularen er blevet send, så henter vi det, brugeren skrev 
+ 
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
 {
     // Vi oprette foresklige variabler som brugere kan indtæste.
