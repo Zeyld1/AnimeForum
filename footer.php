@@ -20,7 +20,7 @@
 
     <div class="footer-section">
         <h3>Information</h3>
-        <p>Sidst opdateret: 7. september 2026</p>
+        <p>Sidst opdateret: <?php echo date("d. F Y"); ?></p>
         <a href="privacy.php">Privatlivspolitik</a>
         <br>
         <a href="rules.php">Regler</a>
