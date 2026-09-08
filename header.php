@@ -1,6 +1,6 @@
 <header class="top-header">
     <div class="logo">
-        <h1>AnimeForum</h1>
+        <h1>Anime Forum</h1>
     </div>
 
     <nav>
