@@ -1,3 +1,4 @@
+<link rel="design" href="style.css">
 <?php include 'header.php'?>
 
 <?php

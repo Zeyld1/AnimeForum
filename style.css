@@ -1,29 +1,53 @@
+/* Fjerner standard afstand rundt om hele hjemmesiden */
 body {
     margin: 0;
 }
 
+
+/* Styler hele header-feltet */
 .top-header {
+    /* Giver headeren en orange baggrund */
     background-color: rgb(249, 173, 33);
 
+    /* Bestemmer hvor høj headeren skal være */
     height: 100px;
 
+    /* Gør så elementerne i headeren kan ligge ved siden af hinanden */
     display: flex;
+
+    /* Centrerer elementerne lodret inde i headeren */
     align-items: center;
 
+    /* Giver luft i venstre og højre side af headeren */
     padding: 0 40px;
 }
 
+
+/* Styler h1-overskriften inde i headeren */
 .top-header h1 {
+    /* Laver afstand mellem overskriften og menuen */
     margin-right: 50px;
 }
 
+
+/* Styler selve navigationen/menuen */
 .top-header nav {
+    /* Gør så menu-links ligger ved siden af hinanden */
     display: flex;
+
+    /* Bestemmer afstanden mellem hvert link */
     gap: 30px;
 }
 
+
+/* Styler links inde i navigationen */
 .top-header nav a {
+    /* Gør teksten sort */
     color: black;
+
+    /* Fjerner understregning under links */
     text-decoration: none;
+
+    /* Gør teksten fed */
     font-weight: bold;
 }
