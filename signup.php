@@ -1,11 +1,56 @@
+<?php
+include 'database.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") 
+  // det betyder Hvis formularen er blevet send, så henter vi det, brugeren skrev  
+{
+    // Vi oprette foresklige variabler som brugere kan indtæste.
+    $username = $_POST["username"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+
+    // Vi henter det input fra brugeren i vores intastafelter og inserter det i vores DB.
+    $sql = "INSERT INTO ForumUsers (username, email, password)
+            VALUES ('$username', '$email', '$password')";
+    // her køre vi koden som står i $sql. Hvis koden lykkedes kommer svaret "bruger oprettet"
+    // hvis der opstår fejl kommer melding "Fejl" 
+    if ($conn->query($sql) === TRUE) {
+        echo "Bruger oprettet!";
+    } else {
+        echo "Fejl: " . $conn->error;
+    }
+}
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sign up</title>
 </head>
+
 <body>
-    
+
+<h1>Opret bruger</h1>
+<!--
+Denne formular bruger POST-metoden til at sende brugerens oplysninger.
+Når brugeren trykker på "Sign up", bliver værdierne fra inputfelterne
+sendt til PHP, hvor de kan hentes med $_POST.
+-->
+<form method="POST">
+    // vi definere metoden POST.
+
+    <input type="text" name="username" placeholder="Username">
+    <br><br>
+
+    <input type="email" name="email" placeholder="Email">
+    <br><br>
+
+    <input type="password" name="password" placeholder="Password">
+    <br><br>
+
+    <button type="submit">Sign up</button>
+
+</form>
+
 </body>
 </html>
