@@ -1,6 +1,6 @@
 <header class="top-header">
     
-        <h1>Anime Forum</h1>
+        <h1>AniMecca</h1>
 
     <nav class ="menu-tekst">
         <a href="index.php">Forside</a>
