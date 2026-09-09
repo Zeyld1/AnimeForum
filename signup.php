@@ -45,35 +45,25 @@
     }
     ?>
 
-    <main class ="signup-container">
+    <main class="signup-container">
+
+    <div class="signup-box">
 
         <h1>Opret bruger</h1>
 
-        <!--
-        Formularen bruger POST-metoden til at sende brugerens oplysninger.
-        Når brugeren trykker på "Sign up", bliver værdierne fra inputfelterne
-        sendt til PHP, hvor de kan hentes med $_POST.
-        -->
         <form method="POST">
-
-            <!-- Inputfelt til brugernavn -->
             <input type="text" name="username" placeholder="Username">
-            <br><br>
 
-            <!-- Inputfelt til email -->
             <input type="email" name="email" placeholder="Email">
-            <br><br>
 
-            <!-- Inputfelt til password -->
             <input type="password" name="password" placeholder="Password">
-            <br><br>
 
-            <!-- Sender formularen -->
             <button type="submit">Sign up</button>
-
         </form>
 
-    </main>
+    </div>
+
+</main>
 
     <!-- Henter vores fælles footer -->
     <?php include 'footer.php'; ?>

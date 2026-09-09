@@ -64,25 +64,25 @@ main {
 }
 
 
-/* Området omkring signup boksen */
+/* Området omkring signup-boksen */
 .signup-container {
     display: flex;
     justify-content: center;
-    padding: 60px 20px;
+
+    padding: 70px 20px;
 }
 
 
-/* Selve signup boksen */
+/* Selve signup-boksen */
 .signup-box {
     width: 350px;
 
-    background-color: white;
-
     padding: 35px;
+
+    background-color: white;
 
     border-radius: 12px;
 
-    /* Laver en lille skygge rundt om boksen */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
@@ -90,6 +90,8 @@ main {
 /* Overskriften */
 .signup-box h1 {
     text-align: center;
+
+    margin-top: 0;
     margin-bottom: 30px;
 }
 
@@ -97,7 +99,11 @@ main {
 /* Formularen */
 .signup-box form {
     display: flex;
+
+    /* Felterne skal stå under hinanden */
     flex-direction: column;
+
+    /* Samme afstand mellem alle felter */
     gap: 18px;
 }
 
@@ -108,13 +114,13 @@ main {
 
     font-size: 16px;
 
-    border: 1px solid #ccc;
+    border: 1px solid #cccccc;
 
     border-radius: 6px;
 }
 
 
-/* Sign up knappen */
+/* Sign up-knappen */
 .signup-box button {
     padding: 12px;
 
@@ -132,7 +138,7 @@ main {
 }
 
 
-/* Når musen holdes over knappen */
+/* Når musen er over knappen */
 .signup-box button:hover {
     background-color: rgb(230, 150, 15);
 }
