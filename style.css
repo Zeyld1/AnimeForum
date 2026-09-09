@@ -7,7 +7,7 @@ body {
 
 /* Hele headeren */
 .top-header {
-    background-color: rgb(249, 173, 33);
+    background-color: rgb(33, 116, 249);
 
     height: 100px;
 
@@ -124,7 +124,7 @@ main {
 .signup-box button {
     padding: 12px;
 
-    background-color: rgb(249, 173, 33);
+    background-color: rgb(33, 116, 249);
 
     border: none;
 
@@ -140,7 +140,7 @@ main {
 
 /* Når musen er over knappen */
 .signup-box button:hover {
-    background-color: rgb(230, 150, 15);
+    background-color: rgb(33, 116, 249);
 }
 
 
