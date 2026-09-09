@@ -2,6 +2,15 @@
 /* Fjerner standard afstand rundt om hele hjemmesiden */
 body {
     margin: 0;
+
+    /* Gør at siden mindst fylder hele skærmens højde */
+    min-height: 100vh;
+
+    /* Gør body til en flex-container */
+    display: flex;
+
+    /* Header, main og footer skal stå under hinanden */
+    flex-direction: column;
 }
 
 
@@ -54,13 +63,17 @@ body {
     font-family: Arial, sans-serif;
 }
 
+
+/* Giver afstand fra venstre side */
 main,
 footer {
     padding-left: 40px;
 }
 
+
+/* Main fylder resten af skærmen og skubber footeren ned */
 main {
-    padding-left: 40px;
+    flex: 1;
 }
 
 
@@ -126,6 +139,8 @@ main {
 
     background-color: rgb(11, 73, 171);
 
+    color: white;
+
     border: none;
 
     border-radius: 6px;
@@ -140,7 +155,7 @@ main {
 
 /* Når musen er over knappen */
 .signup-box button:hover {
-    background-color: rgb(11, 73, 171);
+    background-color: rgb(8, 55, 130);
 }
 
 
@@ -154,6 +169,7 @@ main {
 
     padding: 30px 40px;
 }
+
 
 /* Hver sektion i footeren */
 .footer-section {
