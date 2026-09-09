@@ -1,15 +1,14 @@
 /* Fjerner standard afstand rundt om hele hjemmesiden */
 /* Fjerner standard afstand rundt om hele hjemmesiden */
+/* Hele hjemmesiden */
 body {
     margin: 0;
 
-    /* Gør at siden mindst fylder hele skærmens højde */
+    /* Siden skal mindst fylde hele skærmens højde */
     min-height: 100vh;
 
-    /* Gør body til en flex-container */
-    display: flex;
-
     /* Header, main og footer skal stå under hinanden */
+    display: flex;
     flex-direction: column;
 }
 
@@ -20,10 +19,10 @@ body {
 
     height: 100px;
 
-    /* Elementerne i headeren ligger ved siden af hinanden */
+    /* Elementerne i headeren står ved siden af hinanden */
     display: flex;
 
-    /* Centrerer indholdet lodret */
+    /* Centrerer elementerne lodret */
     align-items: center;
 
     /* Luft i venstre og højre side */
@@ -41,14 +40,14 @@ body {
 .menu-tekst {
     display: flex;
 
-    /* Afstand mellem links */
+    /* Samme afstand mellem links */
     gap: 30px;
 }
 
 
 /* Teksten i menu-linksene */
 .menu-tekst a {
-    color: rgb(252, 250, 250);
+    color: white;
 
     /* Fjerner understregning */
     text-decoration: none;
@@ -56,33 +55,35 @@ body {
     /* Gør teksten fed */
     font-weight: bold;
 
-    /* Ændrer tekststørrelsen */
+    /* Tekststørrelse */
     font-size: 20px;
 
-    /* Ændrer skrifttypen */
+    /* Skrifttype */
     font-family: Arial, sans-serif;
 }
 
 
-/* Giver afstand fra venstre side */
-main,
-footer {
-    padding-left: 40px;
-}
-
-
-/* Main fylder resten af skærmen og skubber footeren ned */
+/* Alt hovedindhold på siden */
 main {
+    /* Fylder den ledige plads og skubber footeren ned */
     flex: 1;
+
+    /* Luft fra siderne */
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 
 /* Området omkring signup-boksen */
 .signup-container {
     display: flex;
+
+    /* Centrerer signup-boksen vandret */
     justify-content: center;
 
-    padding: 70px 20px;
+    /* Luft over og under boksen */
+    padding-top: 70px;
+    padding-bottom: 70px;
 }
 
 
@@ -96,11 +97,12 @@ main {
 
     border-radius: 12px;
 
+    /* Skygge omkring boksen */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 
-/* Overskriften */
+/* Overskriften i signup-boksen */
 .signup-box h1 {
     text-align: center;
 
@@ -109,14 +111,14 @@ main {
 }
 
 
-/* Formularen */
+/* Formularen i signup-boksen */
 .signup-box form {
     display: flex;
 
-    /* Felterne skal stå under hinanden */
+    /* Felterne står under hinanden */
     flex-direction: column;
 
-    /* Samme afstand mellem alle felter */
+    /* Afstand mellem felterne */
     gap: 18px;
 }
 
@@ -153,7 +155,7 @@ main {
 }
 
 
-/* Når musen er over knappen */
+/* Når musen holdes over signup-knappen */
 .signup-box button:hover {
     background-color: rgb(8, 55, 130);
 }
@@ -164,7 +166,10 @@ main {
     background-color: black;
     color: white;
 
+    /* Footer-sektionerne står ved siden af hinanden */
     display: flex;
+
+    /* Fordeler sektionerne hen over bredden */
     justify-content: space-between;
 
     padding: 30px 40px;
@@ -180,11 +185,12 @@ main {
 /* Links i footeren */
 .footer a {
     color: white;
+
     text-decoration: none;
 }
 
 
-/* Når musen holdes over et link */
+/* Når musen holdes over links i footeren */
 .footer a:hover {
     text-decoration: underline;
 }
