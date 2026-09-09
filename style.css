@@ -27,7 +27,7 @@ body {
     align-items: center;
 
     /* Luft i venstre og højre side */
-    padding: 0 40px;
+    padding: 40px 40px;
 }
 
 
@@ -61,7 +61,7 @@ body {
     /* Gør teksten fed */
     font-weight: bold;
 
-    /* Mindre tekst end før */
+    /* Tekstens størrelse */
     font-size: 16px;
 
     /* Skrifttype */
