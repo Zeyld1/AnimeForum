@@ -12,9 +12,20 @@
 <?php include 'header.php'; ?>
 
 <main>
-    <h1>Velkommen til AnimeForum</h1>
-    <p>Hvis du kan se dette, virker din index.php.</p>
-    et stykket er virkligt
+
+    <section class="hero">
+
+        <h1>Velkommen til Anime Forum</h1>
+
+        <p>
+            Diskuter dine yndlingsanime, find nye serier
+            og del dine meninger med andre animefans.
+        </p>
+
+        <a href="signup.php" class="hero-button">Opret bruger</a>
+
+    </section>
+
 </main>
 
 <?php include 'footer.php'; ?>
