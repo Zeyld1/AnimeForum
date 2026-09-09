@@ -1,0 +1,177 @@
+/* Fjerner standard afstand rundt om hele hjemmesiden */
+/* Fjerner standard afstand rundt om hele hjemmesiden */
+body {
+    margin: 0;
+}
+
+
+/* Hele headeren */
+.top-header {
+    background-color: rgb(249, 173, 33);
+
+    height: 100px;
+
+    /* Elementerne i headeren ligger ved siden af hinanden */
+    display: flex;
+
+    /* Centrerer indholdet lodret */
+    align-items: center;
+
+    /* Luft i venstre og højre side */
+    padding: 0 40px;
+}
+
+
+/* Overskriften/logoet i headeren */
+.top-header h1 {
+    margin-right: 50px;
+}
+
+
+/* Selve navigationen */
+.menu-tekst {
+    display: flex;
+
+    /* Afstand mellem links */
+    gap: 30px;
+}
+
+
+/* Teksten i menu-linksene */
+.menu-tekst a {
+    color: black;
+
+    /* Fjerner understregning */
+    text-decoration: none;
+
+    /* Gør teksten fed */
+    font-weight: bold;
+
+    /* Ændrer tekststørrelsen */
+    font-size: 20px;
+
+    /* Ændrer skrifttypen */
+    font-family: Arial, sans-serif;
+}
+
+main,
+footer {
+    padding-left: 40px;
+}
+
+main {
+    padding-left: 40px;
+}
+
+
+/* Området omkring signup-boksen */
+.signup-container {
+    display: flex;
+    justify-content: center;
+
+    padding: 70px 20px;
+}
+
+
+/* Selve signup-boksen */
+.signup-box {
+    width: 350px;
+
+    padding: 35px;
+
+    background-color: white;
+
+    border-radius: 12px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Overskriften */
+.signup-box h1 {
+    text-align: center;
+
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+
+/* Formularen */
+.signup-box form {
+    display: flex;
+
+    /* Felterne skal stå under hinanden */
+    flex-direction: column;
+
+    /* Samme afstand mellem alle felter */
+    gap: 18px;
+}
+
+
+/* Inputfelterne */
+.signup-box input {
+    padding: 12px;
+
+    font-size: 16px;
+
+    border: 1px solid #cccccc;
+
+    border-radius: 6px;
+}
+
+
+/* Sign up-knappen */
+.signup-box button {
+    padding: 12px;
+
+    background-color: rgb(249, 173, 33);
+
+    border: none;
+
+    border-radius: 6px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+/* Når musen er over knappen */
+.signup-box button:hover {
+    background-color: rgb(230, 150, 15);
+}
+
+
+/* Hele footeren */
+.footer {
+    background-color: black;
+    color: white;
+
+    display: flex;
+
+    /* Giver afstand mellem de forskellige områder */
+    justify-content: space-between;
+
+    padding: 30px 40px;
+}
+
+
+/* Hver sektion i footeren */
+.footer-section {
+    width: 30%;
+}
+
+
+/* Links i footeren */
+.footer a {
+    color: white;
+    text-decoration: none;
+}
+
+
+/* Når musen holdes over et link */
+.footer a:hover {
+    text-decoration: underline;
+}
