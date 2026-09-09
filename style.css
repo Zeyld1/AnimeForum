@@ -142,3 +142,36 @@ main {
 .signup-box button:hover {
     background-color: rgb(230, 150, 15);
 }
+
+
+/* Hele footeren */
+.footer {
+    background-color: black;
+    color: white;
+
+    display: flex;
+
+    /* Giver afstand mellem de forskellige områder */
+    justify-content: space-between;
+
+    padding: 30px 40px;
+}
+
+
+/* Hver sektion i footeren */
+.footer-section {
+    width: 30%;
+}
+
+
+/* Links i footeren */
+.footer a {
+    color: white;
+    text-decoration: none;
+}
+
+
+/* Når musen holdes over et link */
+.footer a:hover {
+    text-decoration: underline;
+}
