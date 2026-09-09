@@ -15,7 +15,7 @@
 
     <section class="hero">
 
-        <h1>Velkommen til Anime Forum</h1>
+        <h1>Velkommen til AniMecca</h1>
 
         <p>
             Diskuter dine yndlingsanime, find nye serier
