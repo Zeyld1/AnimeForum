@@ -150,13 +150,10 @@ main {
     color: white;
 
     display: flex;
-
-    /* Giver afstand mellem de forskellige områder */
     justify-content: space-between;
 
     padding: 30px 40px;
 }
-
 
 /* Hver sektion i footeren */
 .footer-section {
