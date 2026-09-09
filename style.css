@@ -28,6 +28,8 @@ body {
 
     /* Luft i venstre og højre side */
     padding: 0 70px;
+
+    justify-content: center;
 }
 
 
