@@ -245,7 +245,7 @@ main {
     /* Fordeler sektionerne hen over bredden */
     justify-content: space-between;
 
-    padding: 30px 40px;
+    padding: 0 40px;
 }
 
 
