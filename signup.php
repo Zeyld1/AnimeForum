@@ -45,7 +45,7 @@
     }
     ?>
 
-    <main>
+    <main class ="signup-container">
 
         <h1>Opret bruger</h1>
 
