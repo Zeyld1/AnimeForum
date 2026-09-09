@@ -21,7 +21,9 @@
     include 'database.php';
 
     // Tjekker om formularen er blevet sendt med POST-metoden
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") 
+        
+        {
 
         // Vi opretter forskellige variabler med det,
         // som brugeren har skrevet i inputfelterne.
