@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $Email = $_POST["Email"];
     $Adgangskoden = $_POST["Adgangskoden"];
 
-    // hvis et felt er tom
+    // hvis et felt er tom (vi har required men det her er bare for sikkerheds skyld)
     if ($Brugernavn == "" || $Email == "" || $Adgangskoden == "") 
     {
         $fejl = "Alle felter skal udfyldes";
