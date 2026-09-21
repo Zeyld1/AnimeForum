@@ -1,0 +1,269 @@
+/* Fjerner standard afstand rundt om hele hjemmesiden */
+/* Fjerner standard afstand rundt om hele hjemmesiden */
+/* Hele hjemmesiden */
+body {
+    margin: 0;
+
+    /* Siden skal mindst fylde hele skærmens højde */
+    min-height: 100vh;
+
+    /* Header, main og footer skal stå under hinanden */
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Hele headeren */
+.top-header {
+    background-color: rgb(21, 34, 50);
+
+    /* Mindre header end før */
+    height: 75px;
+
+    /* Elementerne i headeren står ved siden af hinanden */
+    display: flex;
+
+    /* Centrerer elementerne lodret */
+    align-items: center;
+
+    /* Luft i venstre og højre side */
+    padding: 0 70px;
+
+    justify-content: center;
+}
+
+
+/* Overskriften/logoet i headeren */
+.top-header h1 {
+    margin-right: 70px;
+
+    /* Mindre og mere moderne størrelse */
+    font-size: 28px;
+
+    font-family: Arial, sans-serif;
+
+    color: aliceblue;
+}
+
+
+/* Selve navigationen */
+.menu-tekst {
+    display: flex;
+
+    /* Samme afstand mellem links */
+    gap: 35px;
+}
+
+
+/* Teksten i menu-linksene */
+.menu-tekst a {
+    color: white;
+
+    /* Fjerner understregning */
+    text-decoration: none;
+
+    /* Gør teksten fed */
+    font-weight: bold;
+
+    /* Tekstens størrelse */
+    font-size: 16px;
+
+    /* Skrifttype */
+    font-family: Arial, sans-serif;
+}
+
+
+/* Når musen holdes over et menu-link */
+.menu-tekst a:hover {
+    color: rgb(180, 180, 180);
+}
+
+
+/* Alt hovedindhold på siden */
+main {
+    /* Fylder den ledige plads og skubber footeren ned */
+    flex: 1;
+
+    /* Luft fra siderne */
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+
+/* Forsidens velkomstområde */
+.hero {
+    text-align: center;
+
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+
+/* Stor velkomstoverskrift */
+.hero h1 {
+    font-family: Arial, sans-serif;
+
+    font-size: 48px;
+
+    margin-bottom: 20px;
+}
+
+
+/* Teksten under velkomstoverskriften */
+.hero p {
+    font-family: Arial, sans-serif;
+
+    font-size: 18px;
+
+    color: #666666;
+
+    margin-bottom: 35px;
+}
+
+
+/* Opret bruger-knappen på forsiden */
+.hero-button {
+    display: inline-block;
+
+    background-color: rgb(11, 73, 171);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-family: Arial, sans-serif;
+
+    font-weight: bold;
+
+    padding: 14px 25px;
+
+    border-radius: 6px;
+}
+
+
+/* Når musen holdes over knappen */
+.hero-button:hover {
+    background-color: rgb(8, 55, 130);
+}
+
+
+/* Området omkring signup-boksen */
+.signup-container {
+    display: flex;
+
+    /* Centrerer signup-boksen vandret */
+    justify-content: center;
+
+    /* Luft over og under boksen */
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+
+/* Selve signup-boksen */
+.signup-box {
+    width: 350px;
+
+    padding: 35px;
+
+    background-color: white;
+
+    border-radius: 12px;
+
+    /* Skygge omkring boksen */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Overskriften i signup-boksen */
+.signup-box h1 {
+    text-align: center;
+
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+
+/* Formularen i signup-boksen */
+.signup-box form {
+    display: flex;
+
+    /* Felterne står under hinanden */
+    flex-direction: column;
+
+    /* Afstand mellem felterne */
+    gap: 18px;
+}
+
+
+/* Inputfelterne */
+.signup-box input {
+    padding: 12px;
+
+    font-size: 16px;
+
+    border: 1px solid #cccccc;
+
+    border-radius: 6px;
+}
+
+
+/* Sign up-knappen */
+.signup-box button {
+    padding: 12px;
+
+    background-color: rgb(11, 73, 171);
+
+    color: white;
+
+    border: none;
+
+    border-radius: 6px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+/* Når musen holdes over signup-knappen */
+.signup-box button:hover {
+    background-color: rgb(8, 55, 130);
+}
+
+
+/* Hele footeren */
+.footer {
+    background-color: black;
+    color: white;
+
+    /* Footer-sektionerne står ved siden af hinanden */
+    display: flex;
+
+    /* Fordeler sektionerne hen over bredden */
+    justify-content: space-between;
+
+    padding: 0 40px;
+}
+
+
+/* Hver sektion i footeren */
+.footer-section {
+    width: 30%;
+}
+
+
+/* Links i footeren */
+.footer a {
+    color: white;
+
+    text-decoration: none;
+}
+
+
+/* Når musen holdes over links i footeren */
+.footer a:hover {
+    text-decoration: underline;
+}
