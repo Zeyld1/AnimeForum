@@ -20,6 +20,8 @@
    
     include 'database.php';
 
+    $fejl= "";
+
     // Tjekker om formularen er blevet sendt med POST-metoden
     if ($_SERVER["REQUEST_METHOD"] == "POST") 
         
@@ -33,15 +35,19 @@
 
         // Vi indsætter brugerens oplysninger i ForumUsers-tabellen.
         // ID behøver vi ikke skrive, fordi databasen selv laver det med AUTO_INCREMENT.
+
        $sql = "INSERT INTO ForumUsers (Brugernavn, Email, Adgangskoden)
         VALUES ('$Brugernavn', '$Email', '$Adgangskoden')";
+
         // Her kører vi SQL-koden.
         // Hvis den lykkes, får brugeren beskeden "Bruger oprettet!".
         // Hvis noget går galt, vises database-fejlen.
-        if ($conn->query($sql) === TRUE) {
+        if ($conn->query($sql) === TRUE)
+        {
             echo "Bruger oprettet!";
-        } else {
-            echo "Fejl: " . $conn->error;
+        } else 
+        {
+        $fejl="kunne ikke oprette en bruger";
         }
     }
     ?>
@@ -61,7 +67,12 @@
     <input type="password" name="Adgangskoden" placeholder="Adgangskode">
 
     <button type="submit">Opret bruger</button>
-
+    <?php
+        if ($fejl != "")   
+         {
+           echo '<p class="forkert-input">' . $fejl . '</p>';
+         }
+     ?> 
 </form>
 
     </div>

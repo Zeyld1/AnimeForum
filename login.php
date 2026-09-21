@@ -20,6 +20,8 @@
    
     include 'database.php';
 
+    $fejl="";
+
     // Tjekker om formularen er blevet sendt med POST-metoden
     if ($_SERVER["REQUEST_METHOD"] == "POST") 
         
@@ -46,11 +48,11 @@
         if ($Adgangskoden == $user["Adgangskoden"]) {
             echo "Du er logget ind!";
         } else {
-            echo "Brugernavn eller adgangskode er forkert";
+            $fejl="Brugernavn eller adgangskode er forkert";
         }
 
     } else {
-        echo "Brugernavn eller adgangskode er forkert";
+            $fejl="Brugernavn eller adgangskode er forkert";
     }
 }
     ?>
@@ -62,9 +64,16 @@
         <h1>log ind</h1>
 
         <form method="POST">
-            <input type="text" name="Brugernavn" placeholder="Username">
-            <input type="password" name="Adgangskoden" placeholder="Password">
+            <input type="text" name="Brugernavn" placeholder="Brugernavn">
+            <input type="password" name="Adgangskoden" placeholder="Adgangskode">
             <button type="submit">log ind</button>
+            <?php
+                // ! betyder ikke
+               if ($fejl != "")   
+                {
+                  echo '<p class="forkert-input">' . $fejl . '</p>';
+                }
+            ?> 
         </form>
 
     </div>
