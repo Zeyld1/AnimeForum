@@ -6,6 +6,6 @@
         <a href="index.php">Forside</a>
         <a href="forum.php">Forum</a>
         <a href="login.php">Login</a>
-        <a href="signup.php">Sign up</a>
+        <a href="signup.php">Opret Bruger</a>
     </nav>
 </header>
