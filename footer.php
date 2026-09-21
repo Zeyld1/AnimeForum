@@ -8,7 +8,7 @@
     </div>
 
     <div class="footer-section">
-        <h3>Kontakt</h3>
+        <h3>Kontakt!!!</h3>
         <p>Email: kontakt@animeforum.dk</p>
     </div>
 
