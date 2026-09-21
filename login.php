@@ -64,8 +64,8 @@
         <h1>Log ind</h1>
 
         <form method="POST">
-            <input type="text" name="Brugernavn" placeholder="Brugernavn">
-            <input type="password" name="Adgangskoden" placeholder="Adgangskode">
+            <input type="text" name="Brugernavn" placeholder="Brugernavn"required>
+            <input type="password" name="Adgangskoden" placeholder="Adgangskode"required>
             <button type="submit">Log ind</button>
             <?php
                 // ! betyder ikke
