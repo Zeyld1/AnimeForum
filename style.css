@@ -267,3 +267,11 @@ main {
 .footer a:hover {
     text-decoration: underline;
 }
+
+.forkert-input
+{
+ color: crimson;
+ margin-top: 10px;
+ font-size: small;
+ text-align: center;
+}
