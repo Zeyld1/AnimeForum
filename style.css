@@ -271,14 +271,14 @@ main {
 .forkert-input
 {
  color: crimson;
- margin-top: 30px;
+ margin-top: 10px;
  font-size: medium;
  text-align: center;
 }
 .Bruger-oprettet
 {
     color: darkblue;
-    margin-top: 100px;
-    font-size: medium;
+    margin-top: 10px;
+    size: 30px;
     text-align: center;
 }
