@@ -24,34 +24,41 @@
     $fejl="";
 
     // Tjekker om formularen er blevet sendt med POST-metoden
-    if ($_SERVER["REQUEST_METHOD"] == "POST") 
-        
-        {
+if ($_SERVER["REQUEST_METHOD"] == "POST") 
+{
+    // Vi opretter forskellige variabler med det,
+    // som brugeren har skrevet i inputfelterne.
+    $Brugernavn = $_POST["Brugernavn"];
+    $Email = $_POST["Email"];
+    $Adgangskoden = $_POST["Adgangskoden"];
 
-        // Vi opretter forskellige variabler med det,
-        // som brugeren har skrevet i inputfelterne.
-        $Brugernavn = $_POST["Brugernavn"];
-        $Email = $_POST["Email"];
-        $Adgangskoden = $_POST["Adgangskoden"];
-
+    // hvis et felt er tom
+    if ($Brugernavn == "" || $Email == "" || $Adgangskoden == "") 
+    {
+        $fejl = "Alle felter skal udfyldes";
+    } 
+    else
+    {
         // Vi indsætter brugerens oplysninger i ForumUsers-tabellen.
         // ID behøver vi ikke skrive, fordi databasen selv laver det med AUTO_INCREMENT.
 
-       $sql = "INSERT INTO ForumUsers (Brugernavn, Email, Adgangskoden)
+        $sql = "INSERT INTO ForumUsers (Brugernavn, Email, Adgangskoden)
         VALUES ('$Brugernavn', '$Email', '$Adgangskoden')";
-
+        
         // Her kører vi SQL-koden.
         // Hvis den lykkes, får brugeren beskeden "Bruger oprettet!".
         // Hvis noget går galt, vises database-fejlen.
         if ($conn->query($sql) === TRUE)
         {
             $Oprettet =" Du er nu oprettet";
-        } else 
+        } 
+        else 
         {
-        $fejl="kunne ikke oprette en bruger";
+            $fejl="kunne ikke oprette en bruger";
         }
     }
-    ?>
+}
+?>
 
     <main class="signup-container">
 
@@ -61,11 +68,11 @@
 
         <form method="POST">
 
-    <input type="text" name="Brugernavn" placeholder="Brugernavn">
+    <input type="text" name="Brugernavn" placeholder="Brugernavn" required>
 
-    <input type="email" name="Email" placeholder="Email">
+    <input type="email" name="Email" placeholder="Email"required>
 
-    <input type="password" name="Adgangskoden" placeholder="Adgangskode">
+    <input type="password" name="Adgangskoden" placeholder="Adgangskode"required>
 
     <button type="submit">Opret bruger</button>
     <?php
