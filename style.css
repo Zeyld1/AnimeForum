@@ -279,6 +279,7 @@ main {
 {
     color: darkblue;
     margin-top: 10px;
-    font-size: 30px;
+    font-size: 20px;
     text-align: center;
+    font-weight: bold;
 }
