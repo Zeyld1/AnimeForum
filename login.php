@@ -61,12 +61,12 @@
 
     <div class="signup-box">
 
-        <h1>log ind</h1>
+        <h1>Log ind</h1>
 
         <form method="POST">
             <input type="text" name="Brugernavn" placeholder="Brugernavn">
             <input type="password" name="Adgangskoden" placeholder="Adgangskode">
-            <button type="submit">log ind</button>
+            <button type="submit">Log ind</button>
             <?php
                 // ! betyder ikke
                if ($fejl != "")   
