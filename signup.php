@@ -20,7 +20,8 @@
    
     include 'database.php';
 
-    $fejl= "";
+    $Oprettet= "";
+    $fejl="";
 
     // Tjekker om formularen er blevet sendt med POST-metoden
     if ($_SERVER["REQUEST_METHOD"] == "POST") 
@@ -44,7 +45,7 @@
         // Hvis noget går galt, vises database-fejlen.
         if ($conn->query($sql) === TRUE)
         {
-            echo "Bruger oprettet!";
+            $Oprettet =" Du er nu oprettet";
         } else 
         {
         $fejl="kunne ikke oprette en bruger";
@@ -67,6 +68,12 @@
     <input type="password" name="Adgangskoden" placeholder="Adgangskode">
 
     <button type="submit">Opret bruger</button>
+    <?php
+        if ($Oprettet!= "")   
+         {
+           echo '<p class="Bruger-oprettet">' . $Oprettet . '</p>';
+         }
+     ?> 
     <?php
         if ($fejl != "")   
          {
