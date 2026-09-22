@@ -10,6 +10,8 @@ body {
     /* Header, main og footer skal stå under hinanden */
     display: flex;
     flex-direction: column;
+
+    background-color: black;
 }
 
 
@@ -27,6 +29,8 @@ body {
 
     /* Gør det muligt at placere titlen inde i headeren */
     position: relative;
+
+    border-bottom: 1px solid white;
 }
 
 
@@ -252,6 +256,9 @@ main {
     justify-content: space-between;
 
     padding: 0 40px;
+
+    border-top: 1px solid white;
+
 }
 
 
