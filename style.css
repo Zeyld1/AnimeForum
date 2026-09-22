@@ -41,7 +41,7 @@ body {
     position: absolute;
 
     /* Placering fra venstre side */
-    left: 40px;
+    left: 100px;
 }
 /* Vi fjerner link decoration ved vores titel*/
 .top-header h1 a
