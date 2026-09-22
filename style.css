@@ -46,7 +46,7 @@ body {
 /* Vi fjerner link decoration ved vores titel*/
 .top-header h1 a
 {
-color: aliceblue;
+color: 210, 85, 1;
 text-decoration: none;
 }
 
