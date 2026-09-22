@@ -14,22 +14,19 @@ body {
 
 
 /* Hele headeren */
-.top-header {
+.top-header 
+{
     background-color: rgb(21, 34, 50);
-
-    /* Mindre header end før */
     height: 75px;
 
-    /* Elementerne i headeren står ved siden af hinanden */
     display: flex;
-
-    /* Centrerer elementerne lodret */
     align-items: center;
+    justify-content: center;
 
-    /* Luft i venstre og højre side */
     padding: 0 70px;
 
-    justify-content: center;
+    /* Gør det muligt at placere titlen inde i headeren */
+    position: relative;
 }
 
 
@@ -37,14 +34,14 @@ body {
 .top-header h1 
 {
 
-    /* Mindre og mere moderne størrelse */
     font-size: 28px;
-
     font-family: Arial, sans-serif;
 
-    position: relative;
-    
-    left: -100px;
+    /* Titlen påvirker ikke længere menuens placering */
+    position: absolute;
+
+    /* Placering fra venstre side */
+    left: 40px;
 }
 /* Vi fjerner link decoration ved vores titel*/
 .top-header h1 a
