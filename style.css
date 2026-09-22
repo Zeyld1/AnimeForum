@@ -36,16 +36,15 @@ body {
 /* Overskriften/logoet i headeren */
 .top-header h1 
 {
-    margin-right: 70px;
 
     /* Mindre og mere moderne størrelse */
     font-size: 28px;
 
     font-family: Arial, sans-serif;
 
-    margin-right: 200px;
-
-    margin-left: -20px;
+    position: relative;
+    
+    left: -100px;
 }
 /* Vi fjerner link decoration ved vores titel*/
 .top-header h1 a
