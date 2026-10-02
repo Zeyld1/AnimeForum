@@ -213,7 +213,7 @@ main {
 /* Inputfelterne */
 .signup-box input 
 {
-    width: 100%;
+    width: 50%;
     box-sizing: border-box;
 
     padding: 10px 12px;
@@ -223,7 +223,7 @@ main {
     color: white;
 
     border: 1px solid #777;
-    border-radius: 2px;
+    border-radius: 10px;
 }
 
  
