@@ -217,9 +217,9 @@ main {
     box-sizing: border-box;
 
     padding: 16px;
-    font-size: 18px;
+    font-size: 13px;
 
-    background-color: white;
+    background-color: rgb(7, 7, 7);
     color: black;
 
     border: 1px solid #cccccc;
