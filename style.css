@@ -190,9 +190,9 @@ main {
 /* Overskriften i signup-boksen */
 .signup-box h1 {
     text-align: center;
-
     margin-top: 0;
     margin-bottom: 30px;
+    color: black;
 }
 
 
