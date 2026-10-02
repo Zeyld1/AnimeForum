@@ -198,7 +198,8 @@ main {
 
 
 /* Formularen i signup-boksen */
-.signup-box form {
+.signup-box form 
+{
     display: flex;
 
     /* Felterne står under hinanden */
@@ -210,19 +211,18 @@ main {
 
 
 /* Inputfelterne */
-.signup-box input {
-    padding: 12px;
-
-    font-size: 16px;
-
-    border: 1px solid #cccccc;
-
-    border-radius: 6px;
+.signup-box input 
+{
+background-color: black;
+color: white;
+border: 1px solid gray;
 }
 
 
 /* Sign up-knappen */
-.signup-box button {
+.signup-box button 
+
+{
     padding: 12px;
 
     background-color: rgb(210, 85, 19);
@@ -243,7 +243,7 @@ main {
 
 /* Når musen holdes over signup-knappen */
 .signup-box button:hover {
-    background-color: rgb(8, 55, 130);
+    background-color: rgb(180, 70, 10);
 }
 
 
