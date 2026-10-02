@@ -32,7 +32,7 @@
         $Adgangskoden = $_POST["Adgangskoden"];
         // Her selecter vi den adgangskode og brugernavn fra den bruger som brugeren skriver.
         // derfor bruger vi WHERE = Brugernavn
-        $sql = "SELECT Brugernavn, Adgangskoden FROM ForumUsers WHERE Brugernavn = '$Brugernavn'";
+        $sql = "SELECT Brugernavn, Adgangskoden, id FROM ForumUsers WHERE Brugernavn = '$Brugernavn'";
         
 
         // Vi kører SQL-koden og gemmer resultatet i $result.
@@ -48,6 +48,7 @@
         // med databasens adgangskoden
         if ($Adgangskoden == $user["Adgangskoden"]) {
             echo "Du er logget ind!";
+            $_SESSION["bruger_id"] = $user["id"];
         } else {
             $fejl="Brugernavn eller adgangskode er forkert";
         }
