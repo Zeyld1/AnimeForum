@@ -128,12 +128,15 @@ main
     position: absolute;
     inset: 0;
 
-    background: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.1) 40%,
-        rgba(0, 0, 0, 0.7) 70%,
-        rgb(0, 0, 0) 100%
+    background: linear-gradient
+    
+    (
+    to right,
+    rgb(0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 20%,
+    rgba(0, 0, 0, 0) 80%,
+    rgb(0, 0, 0) 100%
+
     );
 
     z-index: 1;

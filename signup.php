@@ -46,17 +46,17 @@
         }
 
 
-        // Adgangskoden skal indeholde mindst ét stort bogstav
+        // Adgangskoden skal indeholde mindst et stort bogstav
         elseif (!preg_match('/[A-Z]/', $Adgangskoden))
         {
-            $fejl = "Adgangskoden skal indeholde mindst ét stort bogstav";
+            $fejl = "Adgangskoden skal indeholde mindst et stort bogstav";
         }
 
 
-        // Adgangskoden skal indeholde mindst ét tal
+        // Adgangskoden skal indeholde mindst et tal
         elseif (!preg_match('/[0-9]/', $Adgangskoden))
         {
-            $fejl = "Adgangskoden skal indeholde mindst ét tal";
+            $fejl = "Adgangskoden skal indeholde mindst et tal";
         }
 
 
