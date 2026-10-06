@@ -12,6 +12,8 @@
 <main>
     <h1>Forum</h1>
     <p>Her kommer forum-opslagene.</p>
+
+    <a href="opret_traad.php">Opret Tråd</a>
 </main>
 
 <?php include 'footer.php'; ?>
