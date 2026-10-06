@@ -113,34 +113,31 @@
 
                 <!-- required betyder at feltet ikke må være tomt -->
                 <!-- minlength og maxlength bestemmer længden på brugernavnet -->
-                <input
-                    type="text"
-                    name="Brugernavn"
-                    placeholder="Brugernavn"
-                    minlength="3"
-                    maxlength="20"
-                    required
-                >
+<input
+    type="text"
+    name="Brugernavn"
+    placeholder="Brugernavn"
+    minlength="3"
+    maxlength="20"
+    value="<?php echo isset($Brugernavn) ? $Brugernavn : ''; ?>"
+    required
+>
 
+<input
+    type="email"
+    name="Email"
+    placeholder="Email"
+    value="<?php echo isset($Email) ? $Email : ''; ?>"
+    required
+>
 
-                <!-- type="email" gør at browseren kontrollerer,
-                     om det ligner en rigtig email -->
-                <input
-                    type="email"
-                    name="Email"
-                    placeholder="Email"
-                    required
-                >
-
-
-                <!-- Adgangskoden skal mindst være 8 tegn -->
-                <input
-                    type="password"
-                    name="Adgangskoden"
-                    placeholder="Adgangskode"
-                    minlength="8"
-                    required
-                >
+<input
+    type="password"
+    name="Adgangskoden"
+    placeholder="Adgangskode"
+    minlength="8"
+    required
+>
 
 
                 <button type="submit">Opret bruger</button>
