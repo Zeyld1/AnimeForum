@@ -73,11 +73,9 @@ body {
 
 
 /* Alt hovedindhold på siden */
-main {
+main 
+{
     flex: 1;
-
-    padding-left: 40px;
-    padding-right: 40px;
 }
 
 
@@ -139,7 +137,8 @@ main {
 
 
 /* Stor velkomstoverskrift */
-.hero h1 {
+.hero h1 
+{
     font-family: Arial, sans-serif;
     font-size: 48px;
 
@@ -150,7 +149,8 @@ main {
 
 
 /* Teksten under velkomstoverskriften */
-.hero p {
+.hero p 
+{
     font-family: Arial, sans-serif;
     font-size: 18px;
 
