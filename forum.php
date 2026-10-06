@@ -1,5 +1,7 @@
 <?php
 require "database.php";
+$kategorier = $conn->query("SELECT id, navn FROM Kategorier");
+$valgt = $_GET["kategori"] ?? "";
 $result = $conn->query("SELECT id, titel, indhold FROM Traade");
 ?>
 <!DOCTYPE html>
