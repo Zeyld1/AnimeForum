@@ -1,3 +1,7 @@
+<?php
+require "database.php";
+$result = $conn->query("SELECT id, titel, indhold FROM Traade");
+?>
 <!DOCTYPE html>
 <html lang="da">
 <head>
@@ -11,7 +15,6 @@
 
 <main>
     <h1>Forum</h1>
-    <p>Her kommer forum-opslagene.</p>
 
     <a href="opret_traad.php">Opret Tråd</a>
 
