@@ -128,18 +128,14 @@ main
     position: absolute;
     inset: 0;
 
-    background: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.05) 20%,
-        rgba(0, 0, 0, 0.3) 50%,
-        rgb(0, 0, 0) 100%
-
-        to left
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.05) 20%,
-        rgba(0, 0, 0, 0.3) 50%,
-        rgb(0, 0, 0) 100%
+    background: linear-gradient
+    
+    (
+    to right,
+    rgb(0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 20%,
+    rgba(0, 0, 0, 0) 80%,
+    rgb(0, 0, 0) 100%
 
     );
 
