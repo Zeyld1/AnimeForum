@@ -5,12 +5,20 @@ require "database.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $titel = $_POST["titel"];
     $indhold = $_POST["indhold"];
-    $kategori_id = $_POST["kategori_id"];
+    $kategori_ids = $_POST["kategori_id"];
     $bruger_id = $_SESSION["bruger_id"];
 
-    $stmt = $conn->prepare("INSERT INTO Traade (bruger_id, kategori_id, titel, indhold) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("iiss", $bruger_id, $kategori_id, $titel, $indhold);
+    $stmt = $conn->prepare("INSERT INTO Traade (bruger_id, titel, indhold) VALUES (?, ?, ?)");
+    $stmt->bind_param("iss", $bruger_id, $titel, $indhold);
     $stmt->execute();
+
+    $traad_id = $conn->insert_id;
+
+    $stmt2 = $conn->prepare("INSERT INTO TraadKategorier (traad_id, kategori_id) VALUES (?, ?)");
+    foreach ($kategori_ids as $kategori_id) {
+        $stmt2->bind_param("ii", $traad_id, $kategori_id);
+        $stmt2->execute();
+    }
 
     header("Location: forum.php");
     exit();
@@ -31,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="text" name="titel" id="titel" required>
 
         <label for="kategori">Kategori:</label>
-        <select name="kategori_id" id="kategori">
+        <select name="kategori_id[]" id="kategori" multiple>
             <?php
             $result = $conn->query("SELECT id, navn FROM Kategorier");
             while ($row = $result->fetch_assoc()) {
