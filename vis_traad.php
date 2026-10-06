@@ -42,6 +42,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <textarea name="indhold" required></textarea>
             <button type="submit">Send kommentar</button>
         </form>
+        
+<h3>Kommentarer</h3>
+<?php
+$stmt3 = $conn->prepare("SELECT * FROM Kommentar WHERE traad_id = ?");
+$stmt3->bind_param("i", $traad_id);
+$stmt3->execute();
+$kommentarer = $stmt3->get_result();
+
+while ($k = $kommentarer->fetch_assoc()) { 
+?>
+    <div class="kommentar">
+        <p><?php echo htmlspecialchars($k["indhold"]); ?></p>
+    </div>
+<?php } ?>
     </main>
 
     <?php include 'footer.php'; ?>
