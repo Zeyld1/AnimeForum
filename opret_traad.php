@@ -51,6 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label for="indhold">Indhold:</label>
         <textarea name="indhold" id="indhold" required></textarea>
 
+            
         <button type="submit">Opret tråd</button>
     </form>
 
