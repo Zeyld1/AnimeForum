@@ -14,6 +14,13 @@
     <p>Her kommer forum-opslagene.</p>
 
     <a href="opret_traad.php">Opret Tråd</a>
+
+    <?php while ($row = $result->fetch_assoc()) { ?>
+        <div class="traad">
+            <h2><?php echo $row["titel"]; ?></h2>
+            <p><?php echo $row["indhold"]; ?></p>
+        </div>
+    <?php } ?>
 </main>
 
 <?php include 'footer.php'; ?>
