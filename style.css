@@ -177,6 +177,20 @@ main {
     margin-bottom: 35px;
 }
 
+.hero h1,
+.hero p,
+.hero-button {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-button {
+    align-self: flex-start;
+}
+
+.hero p {
+    color: #cccccc;
+}
 
 /* Opret bruger-knappen på forsiden */
 .hero-button {
