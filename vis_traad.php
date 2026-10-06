@@ -1,7 +1,7 @@
 <?php
 require "database.php";
 
-$traad_id = $_GET["____"];
+$traad_id = $_GET["id"];
 
 $stmt = $conn->prepare("SELECT * FROM Traade WHERE id = ?");
 $stmt->bind_param("i", $traad_id);
