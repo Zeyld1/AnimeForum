@@ -348,110 +348,74 @@ main
 
 /* ===== FORUM ===== */
 
-/* Headeren er position: absolute, så vi skubber indholdet ned */
-.forum-side {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    box-sizing: border-box;
+/* To kolonner: sidebar til venstre, tråde til højre */
+.forum-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 40px;
 
-    padding: 110px 20px 50px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 110px 20px 50px 20px;   /* 110px øverst pga. headeren */
+
     font-family: Arial, sans-serif;
 }
 
+.sidebar {
+    align-self: start;
+}
 
-/* Overskrift + opret-knap ved siden af hinanden */
-.forum-top {
+.sidebar-menu {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    margin-bottom: 30px;
-    padding-bottom: 15px;
-
-    border-bottom: 1px solid #333;
+    flex-direction: column;
+    margin-top: 20px;
 }
 
-.forum-top h1 {
-    margin: 0;
-    color: rgb(210, 85, 19);
+.sidebar-menu a {
+    color: #b0b8c4;
+    text-decoration: none;
+    padding: 9px 12px;
 }
 
+.sidebar-menu a:hover {
+    background-color: #1a1a1a;
+}
 
-/* Knap (kan genbruges andre steder) */
 .knap {
+    display: block;
+    text-align: center;
+
     background-color: rgb(210, 85, 19);
     color: white;
-
     text-decoration: none;
     font-weight: bold;
 
-    padding: 10px 20px;
+    padding: 12px;
     border-radius: 6px;
-
-    transition: background-color 0.2s ease;
 }
 
 .knap:hover {
     background-color: rgb(180, 70, 10);
 }
 
-
-/* Ét tråd-kort (hele kortet er et link) */
 .traad {
-    display: block;
-
     background-color: #111;
-    color: aliceblue;
-    text-decoration: none;
-
-    padding: 20px 25px;
-    margin-bottom: 18px;
-
-    border: 1px solid #333;
+    padding: 20px;
+    margin-bottom: 15px;
     border-left: 4px solid rgb(210, 85, 19);
     border-radius: 10px;
-
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.traad:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 18px rgba(210, 85, 19, 0.25);
-    border-color: rgb(210, 85, 19);
 }
 
 .traad h2 {
-    margin: 0 0 10px 0;
-    font-size: 22px;
-    color: rgb(210, 85, 19);
+    margin: 0 0 8px 0;
+}
+
+.traad h2 a {
+    color: aliceblue;
+    text-decoration: none;
 }
 
 .traad p {
-    margin: 0 0 15px 0;
-    color: #cccccc;
-    line-height: 1.5;
-}
-
-.laes-mere {
-    font-size: 14px;
-    font-weight: bold;
-    color: rgb(210, 85, 19);
-}
-
-
-.ingen-traade {
-    text-align: center;
-    color: #999;
-    padding: 40px 0;
-}
-
-
-/* Mobil */
-@media (max-width: 600px) {
-    .forum-top {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-    }
+    margin: 0;
+    color: #aaaaaa;
 }
