@@ -34,28 +34,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php include 'header.php'; ?>
 
     <main>
-        <h1><?php echo $traad["titel"]; ?></h1>
-        <p><?php echo $traad["indhold"]; ?></p>
+        <h1><?php echo htmlspecialchars($traad["titel"]); ?></h1>
+        <p><?php echo htmlspecialchars($traad["indhold"]); ?></p>
 
         <form method="POST">
             <input type="hidden" name="traad_id" value="<?php echo $traad["id"]; ?>">
             <textarea name="indhold" required></textarea>
             <button type="submit">Send kommentar</button>
         </form>
-        
-<h3>Kommentarer</h3>
+
+        <h3>Kommentarer</h3>
+
 <?php
-$stmt3 = $conn->prepare("SELECT * FROM Kommentar WHERE traad_id = ?");
+$stmt3 = $conn->prepare("
+    SELECT Kommentar.indhold, ForumUsers.Brugernavn 
+    FROM Kommentar 
+    JOIN ForumUsers ON Kommentar.bruger_id = ForumUsers.id 
+    WHERE Kommentar.traad_id = ?
+");
 $stmt3->bind_param("i", $traad_id);
 $stmt3->execute();
 $kommentarer = $stmt3->get_result();
 
-while ($k = $kommentarer->fetch_assoc()) { 
+while ($k = $kommentarer->fetch_assoc()) {
 ?>
     <div class="kommentar">
-        <p><?php echo htmlspecialchars($k["indhold"]); ?></p>
+        <strong><?php echo $k["Brugernavn"]; ?>:</strong>
+        <p><?php echo $k["indhold"]; ?></p>
     </div>
 <?php } ?>
+
     </main>
 
     <?php include 'footer.php'; ?>
