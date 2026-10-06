@@ -87,7 +87,11 @@ main
 
     display: flex;
     flex-direction: column;
+
     justify-content: center;
+    align-items: center;
+
+    text-align: center;
 
     overflow: hidden;
 
@@ -172,7 +176,6 @@ main
 /* Opret bruger-knappen på forsiden */
 .hero-button {
     display: inline-block;
-    align-self: flex-start;
 
     background-color: rgb(210, 85, 19);
     color: white;
