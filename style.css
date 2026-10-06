@@ -1,13 +1,7 @@
-/* Fjerner standard afstand rundt om hele hjemmesiden */
-/* Fjerner standard afstand rundt om hele hjemmesiden */
-/* Hele hjemmesiden */
 body {
     margin: 0;
-
-    /* Siden skal mindst fylde hele skærmens højde */
     min-height: 100vh;
 
-    /* Header, main og footer skal stå under hinanden */
     display: flex;
     flex-direction: column;
 
@@ -17,8 +11,7 @@ body {
 
 
 /* Hele headeren */
-.top-header 
-{
+.top-header {
     background-color: rgb(0, 1, 3);
     height: 75px;
 
@@ -26,9 +19,8 @@ body {
     align-items: center;
     justify-content: center;
 
-    padding: 0px;
+    padding: 0;
 
-    /* Gør det muligt at placere titlen inde i headeren */
     position: relative;
 
     border-bottom: 1px solid white;
@@ -36,31 +28,25 @@ body {
 
 
 /* Overskriften/logoet i headeren */
-.top-header h1 
-{
-
+.top-header h1 {
     font-size: 28px;
     font-family: Arial, sans-serif;
 
-    /* Titlen påvirker ikke længere menuens placering */
     position: absolute;
-
-    /* Placering fra venstre side */
     left: 100px;
 }
-/* Vi fjerner link decoration ved vores titel*/
-.top-header h1 a
-{
-color: rgb(210, 85, 19);
-text-decoration: none;
+
+
+/* Vi fjerner link-decoration ved vores titel */
+.top-header h1 a {
+    color: rgb(210, 85, 19);
+    text-decoration: none;
 }
 
 
 /* Selve navigationen */
 .menu-tekst {
     display: flex;
-
-    /* Samme afstand mellem links */
     gap: 35px;
 }
 
@@ -68,17 +54,9 @@ text-decoration: none;
 /* Teksten i menu-linksene */
 .menu-tekst a {
     color: rgb(210, 85, 19);
-
-    /* Fjerner understregning */
     text-decoration: none;
-
-    /* Gør teksten fed */
     font-weight: bold;
-
-    /* Tekstens størrelse */
     font-size: 16px;
-
-    /* Skrifttype */
     font-family: Arial, sans-serif;
 }
 
@@ -91,10 +69,8 @@ text-decoration: none;
 
 /* Alt hovedindhold på siden */
 main {
-    /* Fylder den ledige plads og skubber footeren ned */
     flex: 1;
 
-    /* Luft fra siderne */
     padding-left: 40px;
     padding-right: 40px;
 }
@@ -113,6 +89,7 @@ main {
     overflow: hidden;
 }
 
+
 .hero::before {
     content: "";
 
@@ -126,7 +103,15 @@ main {
     opacity: 0.8;
 
     z-index: 0;
+
+    transition: opacity 0.4s ease;
 }
+
+
+.hero:hover::before {
+    opacity: 0.6;
+}
+
 
 .hero::after {
     content: "";
@@ -145,23 +130,14 @@ main {
     z-index: 1;
 }
 
-.hero::before {
-    transition: opacity 0.4s ease;
-}
-
-.hero:hover::before {
-    opacity: 0.6;
-}
-
 
 /* Stor velkomstoverskrift */
 .hero h1 {
     font-family: Arial, sans-serif;
-
     font-size: 48px;
 
     margin-bottom: 20px;
-    
+
     color: aliceblue;
 }
 
@@ -169,14 +145,15 @@ main {
 /* Teksten under velkomstoverskriften */
 .hero p {
     font-family: Arial, sans-serif;
-
     font-size: 18px;
 
-    color: #666666;
+    color: #cccccc;
 
     margin-bottom: 35px;
 }
 
+
+/* Sørger for at tekst og knap ligger foran billedet */
 .hero h1,
 .hero p,
 .hero-button {
@@ -184,26 +161,18 @@ main {
     z-index: 2;
 }
 
-.hero-button {
-    align-self: flex-start;
-}
-
-.hero p {
-    color: #cccccc;
-}
 
 /* Opret bruger-knappen på forsiden */
 .hero-button {
     display: inline-block;
+    align-self: flex-start;
 
     background-color: rgb(210, 85, 19);
-
     color: white;
 
     text-decoration: none;
 
     font-family: Arial, sans-serif;
-
     font-weight: bold;
 
     padding: 14px 25px;
@@ -214,18 +183,15 @@ main {
 
 /* Når musen holdes over knappen */
 .hero-button:hover {
-    background-color: rgb(210, 85, 19);
+    background-color: rgb(180, 70, 10);
 }
 
 
 /* Området omkring signup-boksen */
 .signup-container {
     display: flex;
-
-    /* Centrerer signup-boksen vandret */
     justify-content: center;
 
-    /* Luft over og under boksen */
     padding-top: 70px;
     padding-bottom: 70px;
 }
@@ -241,41 +207,37 @@ main {
 
     border-radius: 12px;
 
-    /* Skygge omkring boksen */
     box-shadow: 0 4px 15px rgba(250, 248, 248, 0.15);
 }
 
 
 /* Overskriften i signup-boksen */
-.signup-box h1 
-{
+.signup-box h1 {
     text-align: center;
+
     margin-top: 0;
     margin-bottom: 30px;
-    color:  rgb(210, 85, 19);
+
+    color: rgb(210, 85, 19);
 }
 
 
 /* Formularen i signup-boksen */
-.signup-box form 
-{
+.signup-box form {
     display: flex;
-
-    /* Felterne står under hinanden */
     flex-direction: column;
 
-    /* Afstand mellem felterne */
     gap: 18px;
 }
 
 
 /* Inputfelterne */
-.signup-box input 
-{
+.signup-box input {
     width: 100%;
     box-sizing: border-box;
 
     padding: 12px 14px;
+
     font-size: 16px;
 
     background-color: black;
@@ -285,46 +247,45 @@ main {
     border-radius: 10px;
 }
 
-.signup-box input::placeholder 
-{
+
+.signup-box input::placeholder {
     color: white;
 }
- 
-/* Sign up-knappen */
-.hero-button {
-    display: inline-block;
-    align-self: flex-start;
+
+
+/* Signup/login-knappen */
+.signup-box button {
+    padding: 12px;
 
     background-color: rgb(210, 85, 19);
     color: white;
 
-    text-decoration: none;
-    font-family: Arial, sans-serif;
+    border: none;
+    border-radius: 6px;
+
+    font-size: 16px;
     font-weight: bold;
 
-    padding: 14px 25px;
-    border-radius: 6px;
+    cursor: pointer;
 }
 
-.hero-button:hover {
+
+.signup-box button:hover {
     background-color: rgb(180, 70, 10);
 }
+
 
 /* Hele footeren */
 .footer {
     background-color: black;
     color: white;
 
-    /* Footer-sektionerne står ved siden af hinanden */
     display: flex;
-
-    /* Fordeler sektionerne hen over bredden */
     justify-content: space-between;
 
     padding: 0 40px;
 
     border-top: 1px solid white;
-
 }
 
 
@@ -337,7 +298,6 @@ main {
 /* Links i footeren */
 .footer a {
     color: white;
-
     text-decoration: none;
 }
 
@@ -347,18 +307,26 @@ main {
     text-decoration: underline;
 }
 
-.forkert-input
-{
- color: crimson;
- margin-top: 10px;
- font-size: medium;
- text-align: center;
-}
-.Bruger-oprettet
-{
-    color: darkblue;
+
+.forkert-input {
+    color: crimson;
+
     margin-top: 10px;
-    font-size: 20px;
+
+    font-size: medium;
+
     text-align: center;
+}
+
+
+.Bruger-oprettet {
+    color: darkblue;
+
+    margin-top: 10px;
+
+    font-size: 20px;
+
+    text-align: center;
+
     font-weight: bold;
-} 
+}
