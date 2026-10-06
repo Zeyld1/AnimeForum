@@ -20,7 +20,7 @@ $result = $conn->query("SELECT id, titel, indhold FROM Traade");
 
     <?php while ($row = $result->fetch_assoc()) { ?>
         <div class="traad">
-            <h2><?php echo $row["titel"]; ?></h2>
+            <h2><a href="vis_traad.php?id=<?php echo $row["id"]; ?>"><?php echo $row["titel"]; ?></a></h2>
             <p><?php echo $row["indhold"]; ?></p>
         </div>
     <?php } ?>
