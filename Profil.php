@@ -15,6 +15,20 @@ if (!isset($_SESSION["bruger_id"]))
 // Vi gemmer id'et på den bruger som er logget ind
 $bruger_id = $_SESSION["bruger_id"];
 
+// Hvis brugeren har valgt et profilbillede
+if (isset($_FILES["Profilbillede"]))
+{
+    $filnavn = $_FILES["Profilbillede"]["name"];
+    $midlertidig_fil = $_FILES["Profilbillede"]["tmp_name"];
+
+    // Vi bestemmer hvor billedet skal gemmes
+    $mappe = "Uploades/";
+    $sti = $mappe . $filnavn;
+
+    // Flytter billedet fra den midlertidige placering til vores Uploads-mappe
+    move_uploaded_file($midlertidig_fil, $sti);
+}
+
 
 // Hvis brugeren har trykket på Gem-knappen
 if (isset($_POST["gem_ommig"]))
