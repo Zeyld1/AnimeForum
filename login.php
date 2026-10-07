@@ -77,7 +77,9 @@
                 }
             ?> 
         </form>
-
+<p class="skift-side">
+    Har du ikke en konto? <a href="opret_bruger.php">Opret bruger</a>
+</p>
     </div>
 
 </main>

@@ -162,7 +162,11 @@
 
                 ?>
 
-            </form>
+                       </form>
+
+            <p class="skift-side">
+                Har du allerede en konto? <a href="login.php">Log ind</a>
+            </p>
 
         </div>
 
