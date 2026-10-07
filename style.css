@@ -738,3 +738,20 @@ main
     margin: 8px 0 0 0;
     color: #cccccc;
 }
+
+.skift-side {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #b0b8c4;
+}
+
+.skift-side a {
+    color: rgb(210, 85, 19);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.skift-side a:hover {
+    text-decoration: underline;
+}
