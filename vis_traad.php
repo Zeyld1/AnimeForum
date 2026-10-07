@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <span class="kategori-tag"><?php echo htmlspecialchars($navn); ?></span>
         <?php } ?>
     </div>
-<?php } ?>; ?></p>
+<?php } ?></p>
 
         <form method="POST">
             <input type="hidden" name="traad_id" value="<?php echo $traad["id"]; ?>">
