@@ -16,20 +16,26 @@ if (!isset($_SESSION["bruger_id"]))
 $bruger_id = $_SESSION["bruger_id"];
 
 // Hvis brugeren har valgt et profilbillede
-if (isset($_FILES["Profilbillede"]))
+if (
+    isset($_FILES["Profilbillede"]) &&
+    $_FILES["Profilbillede"]["error"] == 0
+)
 {
     $filnavn = $_FILES["Profilbillede"]["name"];
     $midlertidig_fil = $_FILES["Profilbillede"]["tmp_name"];
 
-    // Vi bestemmer hvor billedet skal gemmes
     $mappe = "Uploades/";
     $sti = $mappe . $filnavn;
 
-    // Flytter billedet fra den midlertidige placering til vores Uploads-mappe
     move_uploaded_file($midlertidig_fil, $sti);
+
+    // Gemmer stien til billedet i databasen
+    $sql = "UPDATE ForumUsers
+            SET Profilbillede = '$sti'
+            WHERE id = '$bruger_id'";
+
+    $conn->query($sql);
 }
-
-
 // Hvis brugeren har trykket på Gem-knappen
 if (isset($_POST["gem_ommig"]))
 {
@@ -86,8 +92,7 @@ if ($result->num_rows > 0)
                 Tilladte formater: JPEG og PNG
              </p>
 
-             <img src="images/Ikon.png" alt="Profilbillede" class="profil-billede">
-
+              <img src="<?php echo $user["Profilbillede"]; ?>" alt="Profilbillede" class="profil-billede">
              <form method="POST" enctype="multipart/form-data" class="upload-form">
 
                  <input
