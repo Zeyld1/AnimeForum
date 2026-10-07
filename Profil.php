@@ -16,7 +16,10 @@
         <h1>Min Profil</h1>
 
         <p>
-            Avatar: <img src="images/Ikon.png" alt="Profilbillede">
+            Avatar
+            Tilladte Formater: JPEG, PNG. 
+            
+            <img src="images/Ikon.png" alt="Profilbillede">
         </p>
          <p>
             Navn : Monkey
