@@ -64,6 +64,17 @@ if ($result->num_rows > 0)
 }
 
 ?>
+
+<?php
+if ($user["Profilbillede"] == "")
+{
+    $profilbillede = "images/Ikon.png";
+}
+else
+{
+    $profilbillede = $user["Profilbillede"];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,8 +103,9 @@ if ($result->num_rows > 0)
                 Tilladte formater: JPEG og PNG
              </p>
 
-              <img src="<?php echo $user["Profilbillede"]; ?>" alt="Profilbillede" class="profil-billede">
-             <form method="POST" enctype="multipart/form-data" class="upload-form">
+                   <img src="<?php echo $profilbillede; ?>" alt="Profilbillede" class="profil-billede">        
+                   
+                   <form method="POST" enctype="multipart/form-data" class="upload-form">
 
                  <input
                     type="file"
