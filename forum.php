@@ -1,4 +1,5 @@
 <?php
+session_start();
 require "database.php";
 $kategorier = $conn->query("SELECT id, navn FROM Kategorier");
 $valgt = $_GET["kategori"] ?? "";
