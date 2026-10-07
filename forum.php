@@ -54,13 +54,22 @@ $result = $stmt->get_result();
             </nav>
         </aside>
 
-        <section class="forum-indhold">
+         <section class="forum-indhold">
             <h1>Forum</h1>
 
             <?php while ($row = $result->fetch_assoc()) { ?>
                 <div class="traad">
                     <h2><a href="vis_traad.php?id=<?php echo (int)$row["id"]; ?>"><?php echo htmlspecialchars($row["titel"]); ?></a></h2>
+                    <p class="traad-forfatter">Af <?php echo htmlspecialchars($row["Brugernavn"] ?? "Slettet bruger"); ?></p>
                     <p><?php echo htmlspecialchars($row["indhold"]); ?></p>
+
+                    <?php if (!empty($row["kategorier"])) { ?>
+                        <div class="traad-kategorier">
+                            <?php foreach (explode(", ", $row["kategorier"]) as $navn) { ?>
+                                <span class="kategori-tag"><?php echo htmlspecialchars($navn); ?></span>
+                            <?php } ?>
+                        </div>
+                    <?php } ?>
                 </div>
             <?php } ?>
         </section>
