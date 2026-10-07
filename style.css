@@ -282,7 +282,7 @@ main
 
 /* Hele footeren */
 .footer {
-    background-color: black;
+    background-color: #0b1622;
     color: white;
 
     display: flex;
