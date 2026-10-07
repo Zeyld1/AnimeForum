@@ -399,6 +399,10 @@ main
     cursor: pointer;
 }
 
+.profil-container button:hover {
+    background-color: rgb(180, 70, 10);
+}
+
 /* ===== FORUM ===== */
 
 /* To kolonner: sidebar til venstre, tråde til højre */
