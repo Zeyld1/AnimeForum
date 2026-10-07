@@ -405,10 +405,9 @@ main
 
 .profil-body
 {
-    background-image: url("images/Anime\ 4k\ walpaper.jpg");
-    /* cover for billedet til at være over hele siden*/
+    background-image: url(images/Genos.jpg);
+    /* Vi tvinger billedet til at fylde hele siden*/
     background-size: cover;
-    /* vi centrer billedet*/
     background-position: center;
 }
 
