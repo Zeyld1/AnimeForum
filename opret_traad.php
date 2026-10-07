@@ -34,26 +34,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <?php include 'header.php'; ?>
 
-    <form method="POST" action="opret_traad.php">
-        <label for="titel">Titel:</label>
-        <input type="text" name="titel" id="titel" required>
+    <main>
+        <div class="opret-container">
+            <h1>Opret tråd</h1>
 
-        <label for="kategori">Kategori:</label>
-        <select name="kategori_id[]" id="kategori" multiple>
-            <?php
-            $result = $conn->query("SELECT id, navn FROM Kategorier");
-            while ($row = $result->fetch_assoc()) {
-                echo "<option value='" . $row['id'] . "'>" . $row['navn'] . "</option>";
-            }
-            ?>
-        </select>
+            <form method="POST" action="opret_traad.php" class="opret-form">
+                <label for="titel">Titel</label>
+                <input type="text" name="titel" id="titel" required>
 
-        <label for="indhold">Indhold:</label>
-        <textarea name="indhold" id="indhold" required></textarea>
+                <label for="kategori">Kategori (hold Ctrl nede for at vælge flere)</label>
+                <select name="kategori_id[]" id="kategori" multiple required>
+                    <?php
+                    $result = $conn->query("SELECT id, navn FROM Kategorier");
+                    while ($row = $result->fetch_assoc()) {
+                        echo "<option value='" . (int)$row['id'] . "'>" . htmlspecialchars($row['navn']) . "</option>";
+                    }
+                    ?>
+                </select>
 
-            
-        <button type="submit">Opret tråd</button>
-    </form>
+                <label for="indhold">Indhold</label>
+                <textarea name="indhold" id="indhold" rows="8" required></textarea>
+
+                <button type="submit">Opret tråd</button>
+            </form>
+        </div>
+    </main>
 
     <?php include 'footer.php'; ?>
 </body>
