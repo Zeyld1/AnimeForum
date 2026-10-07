@@ -568,3 +568,91 @@ main
 .opret-form button:hover {
     background-color: rgb(180, 70, 10);
 }
+
+/* ===== VIS TRÅD ===== */
+
+.traad-side {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 110px 20px 50px 20px;   /* 110px øverst pga. headeren */
+
+    font-family: Arial, sans-serif;
+}
+
+.traad-hoved {
+    background-color: #111;
+    padding: 25px;
+    margin-bottom: 25px;
+
+    border-left: 4px solid rgb(210, 85, 19);
+    border-radius: 10px;
+}
+
+.traad-hoved h1 {
+    margin: 0 0 10px 0;
+}
+
+.kommentar-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.kommentar-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 12px 14px;
+
+    background-color: #111;
+    color: white;
+
+    border: 1px solid #333;
+    border-radius: 6px;
+
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+
+.kommentar-form textarea:focus {
+    outline: none;
+    border-color: rgb(210, 85, 19);
+}
+
+.kommentar-form button {
+    align-self: flex-start;
+
+    padding: 10px 20px;
+
+    background-color: rgb(210, 85, 19);
+    color: white;
+
+    border: none;
+    border-radius: 6px;
+
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.kommentar-form button:hover {
+    background-color: rgb(180, 70, 10);
+}
+
+.kommentar {
+    background-color: #111;
+    padding: 15px 20px;
+    margin-bottom: 12px;
+
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.kommentar strong {
+    color: rgb(210, 85, 19);
+}
+
+.kommentar p {
+    margin: 8px 0 0 0;
+    color: #cccccc;
+}
