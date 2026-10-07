@@ -1,12 +1,17 @@
 <header class="top-header">
-    
-        <h1><a href="index.php">AniMecca </a></h1>
 
-    <nav class ="menu-tekst">
+    <h1><a href="index.php">AniMecca </a></h1>
+
+    <nav class="menu-tekst">
         <a href="forum.php">Forum</a>
-        <a href="login.php">Login</a>
-        <a href="signup.php">Opret Bruger</a>
-        <a href="Profil.php">Profil</a>
 
+        <?php if (isset($_SESSION["bruger_id"])) { ?>
+            <a href="Profil.php">Profil</a>
+            <a href="logout.php">Log ud</a>
+        <?php } else { ?>
+            <a href="login.php">Login</a>
+            <a href="signup.php">Opret Bruger</a>
+        <?php } ?>
     </nav>
+
 </header>
