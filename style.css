@@ -368,9 +368,8 @@ main
     object-fit: cover;
 
     border: 3px solid rgb(210, 85, 19);
-    gap: 15px;
 
-    margin-bottom: 20px;
+    margin: 20px;
 }
 
 .profil-container p {
