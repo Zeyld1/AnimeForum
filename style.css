@@ -349,12 +349,6 @@ main
     text-align: center;
 
     font-family: Arial, sans-serif;
-
-    background-image: url(images/Genos.jpg);
-    /* cover gør det at den tvinger billedet til at fylde hele skærmen*/
-    background-size: cover;
-    /* vi gør billedet til at være centreret*/
-    background-position: center;
 }
 
 .profil-container h1 {
@@ -407,6 +401,15 @@ main
 
 .profil-container button:hover {
     background-color: rgb(180, 70, 10);
+}
+
+.profil-body
+{
+    background-image: url("images/Anime\ 4k\ walpaper.jpg");
+    /* cover for billedet til at være over hele siden*/
+    background-size: cover;
+    /* vi centrer billedet*/
+    background-position: center;
 }
 
 /* ===== FORUM ===== */
