@@ -1,5 +1,7 @@
 <header class="top-header">
 
+    <a href="Profil.php" class="profil-link">Profil</a>
+
     <h1><a href="index.php">AniMecca </a></h1>
 
     <nav class="menu-tekst">

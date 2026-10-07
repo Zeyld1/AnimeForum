@@ -774,3 +774,18 @@ main
 .skift-side a:hover {
     text-decoration: underline;
 }
+
+.profil-link {
+    position: absolute;
+    right: 25px;
+
+    color: rgb(210, 85, 19);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+
+.profil-link:hover {
+    color: rgb(180, 180, 180);
+}
