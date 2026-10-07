@@ -3,21 +3,30 @@ require "database.php";
 $kategorier = $conn->query("SELECT id, navn FROM Kategorier");
 $valgt = $_GET["kategori"] ?? "";
 
+$sql = "
+    SELECT Traade.id, Traade.titel, Traade.indhold,
+           ForumUsers.Brugernavn,
+           GROUP_CONCAT(Kategorier.navn SEPARATOR ', ') AS kategorier
+    FROM Traade
+    LEFT JOIN ForumUsers ON Traade.bruger_id = ForumUsers.id
+    LEFT JOIN TraadKategorier ON Traade.id = TraadKategorier.traad_id
+    LEFT JOIN Kategorier ON TraadKategorier.kategori_id = Kategorier.id
+";
+
 if ($valgt !== "") {
-    $stmt = $conn->prepare("
-        SELECT Traade.id, Traade.titel, Traade.indhold
-        FROM Traade
-        JOIN TraadKategorier ON Traade.id = TraadKategorier.traad_id
-        WHERE TraadKategorier.kategori_id = ?
-        ORDER BY Traade.id DESC
-    ");
-    $stmt->bind_param("i", $valgt);
-    $stmt->execute();
-    $result = $stmt->get_result();
-} else {
-    $result = $conn->query("SELECT id, titel, indhold FROM Traade ORDER BY id DESC");
+    $sql .= " WHERE Traade.id IN (SELECT traad_id FROM TraadKategorier WHERE kategori_id = ?)";
 }
+
+$sql .= " GROUP BY Traade.id, ForumUsers.Brugernavn ORDER BY Traade.id DESC";
+
+$stmt = $conn->prepare($sql);
+if ($valgt !== "") {
+    $stmt->bind_param("i", $valgt);
+}
+$stmt->execute();
+$result = $stmt->get_result();
 ?>
+
 <!DOCTYPE html>
 <html lang="da">
 <head>
