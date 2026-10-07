@@ -93,7 +93,7 @@ if ($stmt->execute())
 
                 else
                 {
-                    $fejl = "Kunne ikke oprette en bruger";
+                    $fejl = "Kunne ikke oprette en bruger: " . $stmt->error;
                 }
             }
         }
