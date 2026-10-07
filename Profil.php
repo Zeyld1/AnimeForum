@@ -17,11 +17,11 @@
 
         <p>
             Avatar
-            Tilladte Formater: JPEG, PNG. 
+            Tilladte Formater: JPEG og PNG. 
             
             <img src="images/Ikon.png" alt="Profilbillede">
-        </p>
-         <p>
+         </p>
+          <p>
             Navn : Monkey
          </p>
 
