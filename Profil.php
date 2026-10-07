@@ -103,7 +103,9 @@ else
                 Tilladte formater: JPEG og PNG
              </p>
 
-                   <img src="<?php echo $profilbillede; ?>" alt="Profilbillede" class="profil-billede">             <form method="POST" enctype="multipart/form-data" class="upload-form">
+                   <img src="<?php echo $profilbillede; ?>" alt="Profilbillede" class="profil-billede">        
+                   
+                   <form method="POST" enctype="multipart/form-data" class="upload-form">
 
                  <input
                     type="file"
