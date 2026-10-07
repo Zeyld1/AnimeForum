@@ -22,7 +22,7 @@ if (isset($_FILES["Profilbillede"]))
     $midlertidig_fil = $_FILES["Profilbillede"]["tmp_name"];
 
     // Vi bestemmer hvor billedet skal gemmes
-    $mappe = "Uploads/";
+    $mappe = "Uploades/";
     $sti = $mappe . $filnavn;
 
     // Flytter billedet fra den midlertidige placering til vores Uploads-mappe
