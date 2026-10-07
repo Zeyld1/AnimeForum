@@ -32,11 +32,10 @@
         $Adgangskoden = $_POST["Adgangskoden"];
         // Her selecter vi den adgangskode og brugernavn fra den bruger som brugeren skriver.
         // derfor bruger vi WHERE = Brugernavn
-        $sql = "SELECT Brugernavn, Adgangskoden, id FROM ForumUsers WHERE Brugernavn = '$Brugernavn'";
-        
-
-        // Vi kører SQL-koden og gemmer resultatet i $result.
-        $result = $conn->query($sql);
+        $stmt = $conn->prepare("SELECT Brugernavn, Adgangskoden, id FROM ForumUsers WHERE Brugernavn = ?");
+        $stmt->bind_param("s", $Brugernavn);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
     // Vi tjekker, om databasen fandt en bruger.   
     if ($result->num_rows > 0) 
@@ -46,7 +45,7 @@
   
         // nu kan vi sammenligne vores adgangskoden som brugeren skrev
         // med databasens adgangskoden
-        if ($Adgangskoden == $user["Adgangskoden"]) {
+        if (password_verify($Adgangskoden, $user["Adgangskoden"])) {
             echo "Du er logget ind!";
             $_SESSION["bruger_id"] = $user["id"];
         } else {
