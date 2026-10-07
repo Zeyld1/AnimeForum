@@ -1,3 +1,32 @@
+<?php
+
+session_start();
+
+include 'database.php';
+
+// Hvis brugeren ikke er logget ind,
+// sender vi personen til login-siden
+if (!isset($_SESSION["bruger_id"]))
+{
+    header("Location: login.php");
+    exit();
+}
+
+// Vi gemmer id'et på den bruger som er logget ind
+$bruger_id = $_SESSION["bruger_id"];
+
+// Henter den bruger fra databasen som er logget ind
+$sql = "SELECT * FROM ForumUsers WHERE id = '$bruger_id'";
+
+$result = $conn->query($sql);
+
+// Gemmer brugerens oplysninger
+if ($result->num_rows > 0)
+{
+    $user = $result->fetch_assoc();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,23 +59,22 @@
 
              <form method="POST" enctype="multipart/form-data" class="upload-form">
 
-                <input
+                 <input
                     type="file"
                     name="Profilbillede"
-                    accept=".jpg,.jpeg,.png"
-                 >
+                    accept=".jpg,.jpeg,.png">
 
                  <button type="submit" class="upload-button">
                     Upload billede
                  </button>
 
-                 </form>
+             </form>
 
              <p>
-                Brugernavn: Monkey
+                 Brugernavn: <?php echo $user["Brugernavn"]; ?>
              </p>
 
-             <p>
+             <p class = "OmMig">
                 Om mig: Jeg elsker anime og manga.
              </p>
 
