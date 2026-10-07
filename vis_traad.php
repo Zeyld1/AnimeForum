@@ -43,45 +43,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php include 'header.php'; ?>
 
     <main>
-        <h1><?php echo htmlspecialchars($traad["titel"]); ?></h1>
-<p class="traad-forfatter">Af <?php echo htmlspecialchars($traad["Brugernavn"] ?? "Slettet bruger"); ?></p>
-<p><?php echo htmlspecialchars($traad["indhold"]); ?></p>
+        <div class="traad-side">
 
-<?php if (!empty($traad["kategorier"])) { ?>
-    <div class="traad-kategorier">
-        <?php foreach (explode(", ", $traad["kategorier"]) as $navn) { ?>
-            <span class="kategori-tag"><?php echo htmlspecialchars($navn); ?></span>
-        <?php } ?>
-    </div>
-<?php } ?></p>
+            <div class="traad-hoved">
+                <h1><?php echo htmlspecialchars($traad["titel"]); ?></h1>
+                <p class="traad-forfatter">Af <?php echo htmlspecialchars($traad["Brugernavn"] ?? "Slettet bruger"); ?></p>
+                <p><?php echo htmlspecialchars($traad["indhold"]); ?></p>
 
-        <form method="POST">
-            <input type="hidden" name="traad_id" value="<?php echo $traad["id"]; ?>">
-            <textarea name="indhold" required></textarea>
-            <button type="submit">Send kommentar</button>
-        </form>
+                <?php if (!empty($traad["kategorier"])) { ?>
+                    <div class="traad-kategorier">
+                        <?php foreach (explode(", ", $traad["kategorier"]) as $navn) { ?>
+                            <span class="kategori-tag"><?php echo htmlspecialchars($navn); ?></span>
+                        <?php } ?>
+                    </div>
+                <?php } ?>
+            </div>
 
-        <h3>Kommentarer</h3>
+            <form method="POST" class="kommentar-form">
+                <input type="hidden" name="traad_id" value="<?php echo (int)$traad["id"]; ?>">
+                <textarea name="indhold" rows="4" placeholder="Skriv en kommentar..." required></textarea>
+                <button type="submit">Send kommentar</button>
+            </form>
 
-<?php
-$stmt3 = $conn->prepare("
-    SELECT Kommentar.indhold, ForumUsers.Brugernavn 
-    FROM Kommentar 
-    JOIN ForumUsers ON Kommentar.bruger_id = ForumUsers.id 
-    WHERE Kommentar.traad_id = ?
-");
-$stmt3->bind_param("i", $traad_id);
-$stmt3->execute();
-$kommentarer = $stmt3->get_result();
+            <h3>Kommentarer</h3>
 
-while ($k = $kommentarer->fetch_assoc()) {
-?>
-    <div class="kommentar">
-        <strong><?php echo htmlspecialchars($k["Brugernavn"]); ?>:</strong>
-        <p><?php echo htmlspecialchars($k["indhold"]); ?></p>
-    </div>
-<?php } ?>
+            <?php
+            $stmt3 = $conn->prepare("
+                SELECT Kommentar.indhold, ForumUsers.Brugernavn
+                FROM Kommentar
+                JOIN ForumUsers ON Kommentar.bruger_id = ForumUsers.id
+                WHERE Kommentar.traad_id = ?
+            ");
+            $stmt3->bind_param("i", $traad_id);
+            $stmt3->execute();
+            $kommentarer = $stmt3->get_result();
 
+            while ($k = $kommentarer->fetch_assoc()) {
+            ?>
+                <div class="kommentar">
+                    <strong><?php echo htmlspecialchars($k["Brugernavn"]); ?></strong>
+                    <p><?php echo htmlspecialchars($k["indhold"]); ?></p>
+                </div>
+            <?php } ?>
+
+        </div>
     </main>
 
     <?php include 'footer.php'; ?>
