@@ -411,6 +411,80 @@ main
     background-position: center;
 }
 
+.profil-billede {
+    width: 130px;
+    height: 130px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border: 3px solid rgb(210, 85, 19);
+
+    margin: 20px;
+}
+
+
+.profil-info {
+    color: #aaaaaa;
+    font-size: 14px;
+}
+
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-bottom: 25px;
+}
+
+
+.upload-form input[type="file"] {
+    color: white;
+}
+
+
+.upload-button {
+    padding: 10px 20px;
+
+    background-color: rgb(210, 85, 19);
+    color: white;
+
+    border: none;
+    border-radius: 6px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.upload-button:hover {
+    background-color: rgb(180, 70, 10);
+}
+
+
+.rediger-button {
+    padding: 12px 25px;
+
+    background-color: rgb(210, 85, 19);
+    color: white;
+
+    border: none;
+    border-radius: 6px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.rediger-button:hover {
+    background-color: rgb(180, 70, 10);
+}
+
 /* ===== FORUM ===== */
 
 /* To kolonner: sidebar til venstre, tråde til højre */
