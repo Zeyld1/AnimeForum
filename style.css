@@ -349,6 +349,12 @@ main
     text-align: center;
 
     font-family: Arial, sans-serif;
+
+    background-image: url(images/Genos.jpg);
+    /* cover gør det at den tvinger billedet til at fylde hele skærmen*/
+    background-size: cover;
+    /* vi gør billedet til at være centreret*/
+    background-position: center;
 }
 
 .profil-container h1 {
