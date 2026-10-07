@@ -1,5 +1,10 @@
+
 <?php
 session_start();
+if (!isset($_SESSION["bruger_id"])) {
+    header("Location: login.php");
+    exit();
+}
 require "database.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

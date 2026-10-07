@@ -19,8 +19,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 $traad = $result->fetch_assoc();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $kommentar_indhold = $_POST["indhold"];
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION["bruger_id"])) {    $kommentar_indhold = $_POST["indhold"];
     $bruger_id = $_SESSION["bruger_id"];
     $kommentar_traad_id = $_POST["traad_id"];
 
@@ -59,11 +58,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <?php } ?>
             </div>
 
-            <form method="POST" class="kommentar-form">
-                <input type="hidden" name="traad_id" value="<?php echo (int)$traad["id"]; ?>">
-                <textarea name="indhold" rows="4" placeholder="Skriv en kommentar..." required></textarea>
-                <button type="submit">Send kommentar</button>
-            </form>
+            <?php if (isset($_SESSION["bruger_id"])) { ?>
+
+    <form method="POST" class="kommentar-form">
+        <input type="hidden" name="traad_id" value="<?php echo (int)$traad["id"]; ?>">
+        <textarea name="indhold" rows="4" placeholder="Skriv en kommentar..." required></textarea>
+        <button type="submit">Send kommentar</button>
+    </form>
+
+<?php } else { ?>
+
+    <p><a href="login.php">Log ind</a> for at skrive en kommentar.</p>
+
+<?php } ?>
 
             <h3>Kommentarer</h3>
 
