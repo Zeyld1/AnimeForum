@@ -22,7 +22,7 @@
             <img src="images/Ikon.png" alt="Profilbillede">
          </p>
           <p>
-            Navn : Monkey
+            Brugernavn : Monkey
          </p>
 
          <p>
