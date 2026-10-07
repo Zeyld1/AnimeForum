@@ -88,5 +88,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     <?php include 'footer.php'; ?>
 
 </body>
-
+<?php var_dump($_SESSION); ?>
 </html>
