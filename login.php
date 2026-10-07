@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (isset($_SESSION["bruger_id"])) {
+    header("Location: forum.php");
+    exit();
+}
 include 'database.php';
 
 $fejl = "";
