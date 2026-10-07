@@ -8,7 +8,6 @@
         <a href="forum.php">Forum</a>
 
         <?php if (isset($_SESSION["bruger_id"])) { ?>
-            <a href="Profil.php">Profil</a>
             <a href="logout.php">Log ud</a>
         <?php } else { ?>
             <a href="login.php">Login</a>
