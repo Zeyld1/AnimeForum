@@ -15,10 +15,27 @@ if (!isset($_SESSION["bruger_id"]))
 // Vi gemmer id'et på den bruger som er logget ind
 $bruger_id = $_SESSION["bruger_id"];
 
+
+// Hvis brugeren har trykket på Gem-knappen
+if (isset($_POST["gem_ommig"]))
+{
+    // Vi gemmer det som brugeren har skrevet
+    $OmMig = $_POST["OmMig"];
+
+    // Vi opdaterer OmMig i databasen
+    $sql = "UPDATE ForumUsers
+            SET OmMig = '$OmMig'
+            WHERE id = '$bruger_id'";
+
+    $conn->query($sql);
+}
+
+
 // Henter den bruger fra databasen som er logget ind
 $sql = "SELECT * FROM ForumUsers WHERE id = '$bruger_id'";
 
 $result = $conn->query($sql);
+
 
 // Gemmer brugerens oplysninger
 if ($result->num_rows > 0)
@@ -70,12 +87,22 @@ if ($result->num_rows > 0)
 
              </form>
 
+             <form method="POST">
+
+             <textarea
+             name="OmMig"
+             class="om-mig-felt"
+             placeholder="Skriv lidt om dig selv..."
+             ><?php echo $user["OmMig"]; ?></textarea>
+
+             <button type="submit" name="gem_ommig">
+              Gem
+             </button>
+
+            </form>
+
              <p>
                  Brugernavn: <?php echo $user["Brugernavn"]; ?>
-             </p>
-
-             <p class = "OmMig">
-                Om mig: Jeg elsker anime og manga.
              </p>
 
              <button class="rediger-button">

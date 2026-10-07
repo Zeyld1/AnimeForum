@@ -485,6 +485,25 @@ main
     background-color: rgb(180, 70, 10);
 }
 
+.om-mig-felt {
+    width: 100%;
+    height: 120px;
+
+    box-sizing: border-box;
+
+    padding: 12px;
+
+    background-color: #181818;
+    color: white;
+
+    border: 1px solid #777;
+    border-radius: 8px;
+
+    resize: vertical;
+
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+}
 /* ===== FORUM ===== */
 
 /* To kolonner: sidebar til venstre, tråde til højre */
