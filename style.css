@@ -497,3 +497,74 @@ main
     padding: 4px 14px;
     border-radius: 20px;
 }
+
+/* ===== OPRET TRÅD ===== */
+
+.opret-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 110px 20px 50px 20px;   /* 110px øverst pga. headeren */
+
+    font-family: Arial, sans-serif;
+}
+
+.opret-container h1 {
+    color: rgb(210, 85, 19);
+    margin-bottom: 25px;
+}
+
+.opret-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.opret-form label {
+    color: #b0b8c4;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.opret-form input,
+.opret-form select,
+.opret-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 12px 14px;
+
+    background-color: #111;
+    color: white;
+
+    border: 1px solid #333;
+    border-radius: 6px;
+
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+
+.opret-form input:focus,
+.opret-form select:focus,
+.opret-form textarea:focus {
+    outline: none;
+    border-color: rgb(210, 85, 19);
+}
+
+.opret-form button {
+    margin-top: 20px;
+    padding: 14px;
+
+    background-color: rgb(210, 85, 19);
+    color: white;
+
+    border: none;
+    border-radius: 6px;
+
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.opret-form button:hover {
+    background-color: rgb(180, 70, 10);
+}
