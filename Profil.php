@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Forbinder siden med vores fælles CSS-design -->
+    <link rel="stylesheet" href="style.css">
+
     <title>Document</title>
 </head>
 <body>
@@ -10,7 +14,13 @@
     <main>
         <div class="profil-container">
         <h1>Min Profil</h1>
-        <img src="Default.png" alt="profilbillede">
+
+        <p>
+            Avatar: <img src="Uploads/Ikon.png" alt="Profilbillede">
+        </p>
+         <p>
+            Navn : Monkey
+         </p>
 
          <p>
             Om mig: Jeg elsker anime og manga.

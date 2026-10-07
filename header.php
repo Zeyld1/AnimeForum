@@ -6,5 +6,7 @@
         <a href="forum.php">Forum</a>
         <a href="login.php">Login</a>
         <a href="signup.php">Opret Bruger</a>
+        <a href="Profil.php">Profil</a>
+
     </nav>
 </header>
