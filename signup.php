@@ -63,9 +63,10 @@
         else
         {
             // Vi tjekker først om emailen allerede findes i databasen
-            $sql = "SELECT * FROM ForumUsers WHERE Email = '$Email'";
-
-            $result = $conn->query($sql);
+            $stmt = $conn->prepare("SELECT id FROM ForumUsers WHERE Email = ?");
+            $stmt->bind_param("s", $Email);
+            $stmt->execute();
+            $result = $stmt->get_result();
 
 
             // Hvis vi finder mindst én bruger med emailen,
@@ -80,14 +81,12 @@
                 // Vi indsætter brugerens oplysninger i ForumUsers-tabellen.
                 // ID behøver vi ikke skrive, fordi databasen selv laver det med AUTO_INCREMENT.
 
-                $sql = "INSERT INTO ForumUsers (Brugernavn, Email, Adgangskoden)
-                        VALUES ('$Brugernavn', '$Email', '$Adgangskoden')";
+                $hash = password_hash($Adgangskoden, PASSWORD_DEFAULT);
 
+$stmt = $conn->prepare("INSERT INTO ForumUsers (Brugernavn, Email, Adgangskoden) VALUES (?, ?, ?)");
+$stmt->bind_param("sss", $Brugernavn, $Email, $hash);
 
-                // Her kører vi SQL-koden.
-                // Hvis den lykkes, får brugeren beskeden "Du er nu oprettet".
-                // Hvis noget går galt, vises fejlbeskeden.
-                if ($conn->query($sql) === TRUE)
+if ($stmt->execute())
                 {
                     $Oprettet = "Du er nu oprettet";
                 }
@@ -119,7 +118,7 @@
     placeholder="Brugernavn"
     minlength="3"
     maxlength="20"
-    value="<?php echo isset($Brugernavn) ? $Brugernavn : ''; ?>"
+    value="<?php echo isset($Brugernavn) ? htmlspecialchars($Brugernavn) : ''; ?>"    
     required
 >
 
@@ -127,7 +126,7 @@
     type="email"
     name="Email"
     placeholder="Email"
-    value="<?php echo isset($Email) ? $Email : ''; ?>"
+    value="<?php echo isset($Email) ? htmlspecialchars($Email) : ''; ?>"
     required
 >
 
