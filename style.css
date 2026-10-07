@@ -333,10 +333,74 @@ main
 
     font-weight: bold;
 }
+/* ===== Profil siden ===== */
+.profil-container {
+    width: 420px;
 
-.profil-container
-{
- font-style: italic;
+    margin: 120px auto 60px auto;
+    padding: 35px;
+
+    background-color: #111111;
+
+    border-radius: 15px;
+
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.08);
+
+    text-align: center;
+
+    font-family: Arial, sans-serif;
+}
+
+.profil-container h1 {
+    color: rgb(210, 85, 19);
+
+    font-size: 32px;
+
+    margin-bottom: 30px;
+}
+
+.profil-container img {
+    width: 130px;
+    height: 130px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border: 3px solid rgb(210, 85, 19);
+
+    margin-bottom: 20px;
+}
+
+.profil-container p {
+    color: #dddddd;
+
+    font-size: 17px;
+
+    margin: 15px 0;
+}
+
+.profil-container button {
+    margin-top: 20px;
+
+    padding: 12px 25px;
+
+    background-color: rgb(210, 85, 19);
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.profil-container button:hover {
+    background-color: rgb(180, 70, 10);
 }
 
 /* ===== FORUM ===== */
