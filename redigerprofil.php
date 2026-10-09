@@ -1,3 +1,4 @@
+
 <?php
 
 session_start();
@@ -49,6 +50,43 @@ if (isset($_POST["gem_ommig"]))
             WHERE id = '$bruger_id'";
 
     $conn->query($sql);
+}
+
+$fejl = "";
+
+// Hvis brugeren har trykket på "Gem brugernavn"
+if (isset($_POST["gem_brugernavn"]))
+{
+    // trim() fjerner mellemrum i begyndelsen og slutningen
+    $nytBrugernavn = trim($_POST["Brugernavn"]);
+
+    if ($nytBrugernavn == "")
+    {
+        $fejl = "Brugernavnet må ikke være tomt.";
+    }
+    else
+    {
+        // Tjekker om en ANDEN bruger allerede har det navn
+        $stmt = $conn->prepare(
+            "SELECT id FROM ForumUsers WHERE Brugernavn = ? AND id != ?"
+        );
+        $stmt->bind_param("si", $nytBrugernavn, $bruger_id);
+        $stmt->execute();
+        $stmt->store_result();
+
+        if ($stmt->num_rows > 0)
+        {
+            $fejl = "Brugernavnet er allerede i brug.";
+        }
+        else
+        {
+            $stmt = $conn->prepare(
+                "UPDATE ForumUsers SET Brugernavn = ? WHERE id = ?"
+            );
+            $stmt->bind_param("si", $nytBrugernavn, $bruger_id);
+            $stmt->execute();
+        }
+    }
 }
 
 
@@ -126,8 +164,27 @@ else
 
             </form>
 
-            <h1><?php echo htmlspecialchars($user["Brugernavn"]); ?></h1>
+<form method="POST" class="brugernavn-form">
 
+    <label for="Brugernavn">Brugernavn</label>
+
+    <input
+        type="text"
+        id="Brugernavn"
+        name="Brugernavn"
+        class="brugernavn-felt"
+        maxlength="30"
+        value="<?php echo htmlspecialchars($user["Brugernavn"]); ?>">
+
+    <?php if ($fejl != "") { ?>
+        <p class="fejl-besked"><?php echo $fejl; ?></p>
+    <?php } ?>
+
+    <button type="submit" name="gem_brugernavn" class="gem-button">
+        Gem brugernavn
+    </button>
+
+</form>
             <p class="profil-info">
                 Klik på billedet for at skifte. Tilladte formater: JPEG og PNG
             </p>

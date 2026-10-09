@@ -579,6 +579,41 @@ main
         border-radius: 22px;
     }
 }
+
+.brugernavn-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 0 28px;
+    text-align: left;
+}
+
+.brugernavn-form label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.brugernavn-felt {
+    padding: 13px 16px;
+    background: var(--felt-bg);
+    color: var(--tekst);
+    border: 1px solid var(--kant);
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 15px;
+}
+
+.brugernavn-felt:focus {
+    outline: none;
+    border-color: var(--orange);
+    box-shadow: 0 0 0 4px rgba(210, 85, 19, 0.25);
+}
+
+.fejl-besked {
+    margin: 0;
+    color: #ff7b72;
+    font-size: 14px;
+}
 /* ===== FORUM ===== */
 
 /* To kolonner: sidebar til venstre, tråde til højre */
