@@ -874,3 +874,165 @@ main
 .profil-link:hover {
     color: rgb(180, 180, 180);
 }
+
+
+/* =====================================================
+   RESPONSIVT DESIGN
+   Sæt denne blok HELT NEDERST i style.css, så den kan
+   overskrive de eksisterende regler.
+   ===================================================== */
+
+/* ----- Gælder alle skærme: fleksible størrelser ----- */
+
+img {
+    max-width: 100%;
+}
+
+/* Overskriften skalerer selv mellem 30px og 48px */
+.hero h1 {
+    font-size: clamp(30px, 6vw, 48px);
+}
+
+.hero p {
+    font-size: clamp(16px, 2.5vw, 18px);
+    padding: 0 20px;
+}
+
+/* Signup-boksen er højst 350px, men aldrig bredere end skærmen */
+.signup-box {
+    width: min(350px, calc(100% - 32px));
+    box-sizing: border-box;
+}
+
+
+/* ----- Tablet og små laptops ----- */
+@media (max-width: 1100px) {
+
+    .top-header h1 {
+        left: 30px;
+        font-size: 24px;
+    }
+
+    .profil-link {
+        right: 30px;
+    }
+
+    .forum-layout {
+        gap: 24px;
+        grid-template-columns: 200px 1fr;
+    }
+}
+
+
+/* ----- Mobil og små tablets ----- */
+@media (max-width: 768px) {
+
+    /* Header: logo, menu og profil-link lægger sig i række og kan ombrydes */
+    .top-header {
+        height: auto;
+        min-height: 64px;
+
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 8px 16px;
+
+        padding: 10px 16px;
+        box-sizing: border-box;
+    }
+
+    .top-header h1 {
+        position: static;
+        margin: 0;
+        font-size: 22px;
+    }
+
+    .menu-tekst {
+        flex-wrap: wrap;
+        gap: 6px 16px;
+    }
+
+    .menu-tekst a,
+    .profil-link {
+        font-size: 14px;
+    }
+
+    .profil-link {
+        position: static;
+    }
+
+    /* Forside */
+    .hero {
+        min-height: 440px;
+        padding: 120px 0 40px 0;
+    }
+
+    /* Forum: sidebar lægger sig over trådene i stedet for ved siden af */
+    .forum-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 130px 16px 40px 16px;
+    }
+
+    .sidebar-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 14px;
+    }
+
+    .traad-kategorier {
+        flex-wrap: wrap;
+    }
+
+    /* Opret tråd og vis tråd: mere plads øverst til headeren */
+    .opret-container,
+    .traad-side {
+        padding: 130px 16px 40px 16px;
+    }
+
+    .traad-hoved {
+        padding: 18px;
+    }
+
+    .traad {
+        padding: 16px;
+    }
+
+    .kommentar-form button {
+        align-self: stretch;
+    }
+
+    /* Signup og login */
+    .signup-container {
+        padding: 100px 0 40px 0;
+        margin-top: 0;
+    }
+
+    /* Footer: sektionerne stables under hinanden */
+    .footer {
+        flex-direction: column;
+        gap: 18px;
+        padding: 24px 20px;
+    }
+
+    .footer-section {
+        width: 100%;
+    }
+}
+
+
+/* ----- Små mobiler ----- */
+@media (max-width: 480px) {
+
+    .top-header h1 {
+        font-size: 20px;
+    }
+
+    .signup-box {
+        padding: 24px 20px;
+    }
+
+    .hero-button {
+        padding: 12px 20px;
+    }
+}
