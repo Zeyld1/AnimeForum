@@ -36,6 +36,7 @@ if (
 
     $conn->query($sql);
 }
+
 // Hvis brugeren har trykket på Gem-knappen
 if (isset($_POST["gem_ommig"]))
 {
@@ -63,9 +64,7 @@ if ($result->num_rows > 0)
     $user = $result->fetch_assoc();
 }
 
-?>
-
-<?php
+// Hvis brugeren ikke har et billede, bruger vi standardbilledet
 if ($user["Profilbillede"] == "")
 {
     $profilbillede = "images/Ikon.png";
@@ -74,15 +73,17 @@ else
 {
     $profilbillede = $user["Profilbillede"];
 }
+
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Forbinder siden med vores fælles CSS-design -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="profil.css">
 
     <title>Min Profil</title>
 </head>
@@ -95,54 +96,66 @@ else
 
         <div class="profil-container">
 
-             <h1>Min Profil</h1>
+            <!-- Klik på billedet for at vælge et nyt. Formularen sendes automatisk. -->
+            <form method="POST" enctype="multipart/form-data" class="avatar-form">
 
-             <p>Avatar</p>
+                <label class="avatar-wrap" for="profilbillede-input">
 
-             <p class="profil-info">
-                Tilladte formater: JPEG og PNG
-             </p>
+                    <img
+                        src="<?php echo htmlspecialchars($profilbillede); ?>"
+                        alt="Dit profilbillede"
+                        class="profil-billede">
 
-                   <img src="<?php echo $profilbillede; ?>" alt="Profilbillede" class="profil-billede">        
-                   
-                   <form method="POST" enctype="multipart/form-data" class="upload-form">
+                    <span class="avatar-edit" title="Skift profilbillede">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                            <circle cx="12" cy="13" r="4"/>
+                        </svg>
+                    </span>
 
-                 <input
+                </label>
+
+                <input
                     type="file"
+                    id="profilbillede-input"
+                    class="skjult-input"
                     name="Profilbillede"
-                    accept=".jpg,.jpeg,.png">
-
-                 <button type="submit" class="upload-button">
-                    Upload billede
-                 </button>
-
-             </form>
-
-             <form method="POST">
-
-             <textarea
-             name="OmMig"
-             class="om-mig-felt"
-             placeholder="Skriv lidt om dig selv..."
-             ><?php echo $user["OmMig"]; ?></textarea>
-
-             <button type="submit" name="gem_ommig">
-              Gem
-             </button>
+                    accept=".jpg,.jpeg,.png"
+                    onchange="this.form.submit()">
 
             </form>
 
-             <p>
-                 Brugernavn: <?php echo $user["Brugernavn"]; ?>
-             </p>
+            <h1><?php echo htmlspecialchars($user["Brugernavn"]); ?></h1>
 
-             <button class="rediger-button">
+            <p class="profil-info">
+                Klik på billedet for at skifte. Tilladte formater: JPEG og PNG
+            </p>
+
+            <form method="POST" class="ommig-form">
+
+                <label for="OmMig">Om mig</label>
+
+                <textarea
+                    id="OmMig"
+                    name="OmMig"
+                    class="om-mig-felt"
+                    placeholder="Skriv lidt om dig selv..."
+                ><?php echo htmlspecialchars($user["OmMig"]); ?></textarea>
+
+                <button type="submit" name="gem_ommig" class="gem-button">
+                    Gem ændringer
+                </button>
+
+            </form>
+
+            <button type="button" class="rediger-button">
                 Rediger profil
-             </button>
+            </button>
 
-         </div>
+        </div>
 
-     </main>
+    </main>
 
     <?php include 'footer.php'; ?>
 

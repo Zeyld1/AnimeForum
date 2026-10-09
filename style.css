@@ -334,176 +334,250 @@ main
 
     font-weight: bold;
 }
-/* ===== Profil siden ===== */
-.profil-container {
-    width: 420px;
+/* ===== Profil redigerings siden ===== */
+/* ===== Profil-siden: moderne design ===== */
 
-    margin: 120px auto 60px auto;
-    padding: 35px;
-
-    background-color: #152233;
-
-    border-radius: 15px;
-
-    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.08);
-
-    text-align: center;
-
-    font-family: Arial, sans-serif;
+:root {
+    --orange: rgb(210, 85, 19);
+    --orange-lys: rgb(238, 116, 48);
+    --orange-moerk: rgb(180, 70, 10);
+    --kort-bg: rgba(14, 24, 38, 0.72);
+    --felt-bg: rgba(255, 255, 255, 0.06);
+    --kant: rgba(255, 255, 255, 0.12);
+    --tekst: #f2f4f7;
+    --tekst-daempet: #9aa7b8;
 }
 
-.profil-container h1 {
-    color: rgb(210, 85, 19);
-
-    font-size: 32px;
-
-    margin-bottom: 30px;
-}
-
-.profil-container img {
-    width: 130px;
-    height: 130px;
-
-    border-radius: 50%;
-
-    object-fit: cover;
-
-    border: 3px solid rgb(210, 85, 19);
-
-    margin: 20px;
-}
-
-.profil-container p {
-    color: #dddddd;
-
-    font-size: 17px;
-
-    margin: 15px 0;
-}
-
-.profil-container button {
-    margin-top: 20px;
-
-    padding: 12px 25px;
-
-    background-color: rgb(210, 85, 19);
-
-    color: white;
-
-    border: none;
-
-    border-radius: 8px;
-
-    font-size: 16px;
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-.profil-container button:hover {
-    background-color: rgb(180, 70, 10);
-}
-
-.profil-body
-{
-    background-image: url(images/Genos.jpg);
-    /* Vi tvinger billedet til at fylde hele siden*/
+/* ----- Baggrund ----- */
+.profil-body {
+    background-image:
+        linear-gradient(rgba(8, 14, 24, 0.55), rgba(8, 14, 24, 0.75)),
+        url(images/Genos.jpg);
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* ----- Kortet ----- */
+.profil-container {
+    width: min(460px, calc(100% - 32px));
+    margin: 120px auto 60px auto;
+    padding: 40px 32px 32px;
+
+    background: var(--kort-bg);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+
+    border: 1px solid var(--kant);
+    border-radius: 28px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+
+    text-align: center;
+    color: var(--tekst);
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+}
+
+/* ----- Avatar ----- */
+.avatar-form {
+    margin: 0;
+}
+
+.avatar-wrap {
+    position: relative;
+    display: inline-block;
+    padding: 4px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    /* ring med farveforløb rundt om billedet */
+    background: conic-gradient(
+        from 200deg,
+        var(--orange-lys),
+        var(--orange),
+        #7a2d08,
+        var(--orange-lys)
+    );
+    box-shadow: 0 0 40px rgba(210, 85, 19, 0.35);
+    transition: box-shadow 0.25s ease;
+}
+
+.avatar-wrap:hover,
+.avatar-wrap:focus-within {
+    box-shadow: 0 0 55px rgba(210, 85, 19, 0.6);
+}
+
+.avatar-wrap:focus-within {
+    outline: 2px solid #fff;
+    outline-offset: 4px;
 }
 
 .profil-billede {
-    width: 130px;
-    height: 130px;
+    display: block;
+    width: 150px;
+    height: 150px;
+    margin: 0;
 
     border-radius: 50%;
-
     object-fit: cover;
-
-    border: 3px solid rgb(210, 85, 19);
-
-    margin: 20px;
+    border: 4px solid #0e1826;
 }
 
+/* Lille kamera-knap nederst til højre på billedet */
+.avatar-edit {
+    position: absolute;
+    right: 6px;
+    bottom: 6px;
+
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+
+    background: var(--orange);
+    color: #fff;
+    border: 3px solid #0e1826;
+    border-radius: 50%;
+
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.avatar-wrap:hover .avatar-edit {
+    background: var(--orange-lys);
+    transform: scale(1.08);
+}
+
+.avatar-edit svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Skjuler selve fil-feltet, men beholder det til tastatur og skærmlæsere */
+.skjult-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+/* ----- Tekst ----- */
+.profil-container h1 {
+    margin: 22px 0 6px;
+    color: var(--tekst);
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
 
 .profil-info {
-    color: #aaaaaa;
-    font-size: 14px;
+    margin: 0 0 30px;
+    color: var(--tekst-daempet);
+    font-size: 13px;
 }
 
-
-.upload-form {
+/* ----- Om mig ----- */
+.ommig-form {
     display: flex;
     flex-direction: column;
-
-    gap: 12px;
-
-    margin-bottom: 25px;
+    gap: 10px;
+    margin: 0;
+    text-align: left;
 }
 
-
-.upload-form input[type="file"] {
-    color: white;
-}
-
-
-.upload-button {
-    padding: 10px 20px;
-
-    background-color: rgb(210, 85, 19);
-    color: white;
-
-    border: none;
-    border-radius: 6px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-
-.upload-button:hover {
-    background-color: rgb(180, 70, 10);
-}
-
-
-.rediger-button {
-    padding: 12px 25px;
-
-    background-color: rgb(210, 85, 19);
-    color: white;
-
-    border: none;
-    border-radius: 6px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-
-.rediger-button:hover {
-    background-color: rgb(180, 70, 10);
+.ommig-form label {
+    color: var(--tekst);
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .om-mig-felt {
     width: 100%;
-    height: 120px;
-
+    height: 130px;
     box-sizing: border-box;
+    padding: 14px 16px;
 
-    padding: 12px;
+    background: var(--felt-bg);
+    color: var(--tekst);
 
-    background-color: #181818;
-    color: white;
-
-    border: 1px solid #777;
-    border-radius: 8px;
+    border: 1px solid var(--kant);
+    border-radius: 14px;
 
     resize: vertical;
-
-    font-family: Arial, sans-serif;
+    font-family: inherit;
     font-size: 15px;
+    line-height: 1.5;
+
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.om-mig-felt::placeholder {
+    color: var(--tekst-daempet);
+}
+
+.om-mig-felt:focus {
+    outline: none;
+    border-color: var(--orange);
+    box-shadow: 0 0 0 4px rgba(210, 85, 19, 0.25);
+}
+
+/* ----- Knapper ----- */
+.gem-button,
+.rediger-button {
+    width: 100%;
+    padding: 13px 24px;
+
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: background-color 0.2s ease, transform 0.15s ease,
+                border-color 0.2s ease;
+}
+
+.gem-button {
+    background: linear-gradient(135deg, var(--orange-lys), var(--orange));
+    color: #fff;
+    border: none;
+}
+
+.gem-button:hover {
+    background: linear-gradient(135deg, var(--orange), var(--orange-moerk));
+}
+
+.gem-button:active,
+.rediger-button:active {
+    transform: scale(0.98);
+}
+
+.rediger-button {
+    margin-top: 24px;
+    background: transparent;
+    color: var(--tekst);
+    border: 1px solid var(--kant);
+}
+
+.rediger-button:hover {
+    border-color: var(--orange);
+    color: var(--orange-lys);
+}
+
+.gem-button:focus-visible,
+.rediger-button:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+
+/* ----- Mobil ----- */
+@media (max-width: 480px) {
+    .profil-container {
+        margin-top: 100px;
+        padding: 32px 20px 24px;
+        border-radius: 22px;
+    }
 }
 /* ===== FORUM ===== */
 
