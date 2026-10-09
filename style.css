@@ -335,28 +335,29 @@ main
     font-weight: bold;
 }
 /* ===== Profil redigerings siden ===== */
-/* ===== Profil-siden: moderne design ===== */
 
 :root {
     --orange: rgb(210, 85, 19);
     --orange-lys: rgb(238, 116, 48);
     --orange-moerk: rgb(180, 70, 10);
-    --kort-bg: rgba(14, 24, 38, 0.72);
-    --felt-bg: rgba(255, 255, 255, 0.06);
-    --kant: rgba(255, 255, 255, 0.12);
-    --tekst: #f2f4f7;
-    --tekst-daempet: #9aa7b8;
+
+    --blaa-900: #0a1220;   /* sidens baggrund */
+    --blaa-800: #101c30;   /* kortet */
+    --blaa-700: #17263e;   /* felter */
+    --blaa-600: #26395a;   /* kanter */
+
+    --tekst: #eaf0f8;
+    --tekst-daempet: #8fa0b8;
 }
 
-/* ----- Baggrund ----- */
+/* ----- Baggrund: kun to farver, ingen billede ----- */
 .profil-body {
-    background-image:
-        linear-gradient(rgba(8, 14, 24, 0.55), rgba(8, 14, 24, 0.75)),
-        url(images/Genos.jpg);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
     min-height: 100vh;
+    background-color: var(--blaa-900);
+    background-image:
+        radial-gradient(ellipse 60% 40% at 50% 0%, rgba(210, 85, 19, 0.18), transparent 70%),
+        radial-gradient(ellipse 70% 50% at 50% 100%, rgba(38, 57, 90, 0.55), transparent 70%);
+    background-attachment: fixed;
 }
 
 /* ----- Kortet ----- */
@@ -365,13 +366,14 @@ main
     margin: 120px auto 60px auto;
     padding: 40px 32px 32px;
 
-    background: var(--kort-bg);
-    -webkit-backdrop-filter: blur(18px);
-    backdrop-filter: blur(18px);
+    background: var(--blaa-800);
+    border: 1px solid var(--blaa-600);
+    border-radius: 24px;
 
-    border: 1px solid var(--kant);
-    border-radius: 28px;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    /* tynd orange kant øverst */
+    box-shadow:
+        inset 0 3px 0 var(--orange),
+        0 24px 60px rgba(0, 0, 0, 0.5);
 
     text-align: center;
     color: var(--tekst);
@@ -390,25 +392,24 @@ main
     border-radius: 50%;
     cursor: pointer;
 
-    /* ring med farveforløb rundt om billedet */
     background: conic-gradient(
         from 200deg,
         var(--orange-lys),
         var(--orange),
-        #7a2d08,
+        var(--orange-moerk),
         var(--orange-lys)
     );
-    box-shadow: 0 0 40px rgba(210, 85, 19, 0.35);
+    box-shadow: 0 0 36px rgba(210, 85, 19, 0.3);
     transition: box-shadow 0.25s ease;
 }
 
 .avatar-wrap:hover,
 .avatar-wrap:focus-within {
-    box-shadow: 0 0 55px rgba(210, 85, 19, 0.6);
+    box-shadow: 0 0 52px rgba(210, 85, 19, 0.55);
 }
 
 .avatar-wrap:focus-within {
-    outline: 2px solid #fff;
+    outline: 2px solid var(--tekst);
     outline-offset: 4px;
 }
 
@@ -420,7 +421,7 @@ main
 
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid #0e1826;
+    border: 4px solid var(--blaa-800);
 }
 
 /* Lille kamera-knap nederst til højre på billedet */
@@ -436,7 +437,7 @@ main
 
     background: var(--orange);
     color: #fff;
-    border: 3px solid #0e1826;
+    border: 3px solid var(--blaa-800);
     border-radius: 50%;
 
     transition: transform 0.2s ease, background-color 0.2s ease;
@@ -463,21 +464,14 @@ main
 }
 
 /* ----- Tekst ----- */
-.profil-container h1 {
-    margin: 22px 0 6px;
-    color: var(--tekst);
-    font-size: 30px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-}
-
 .profil-info {
-    margin: 0 0 30px;
+    margin: 14px 0 28px;
     color: var(--tekst-daempet);
     font-size: 13px;
 }
 
-/* ----- Om mig ----- */
+/* ----- Formularer ----- */
+.brugernavn-form,
 .ommig-form {
     display: flex;
     flex-direction: column;
@@ -486,40 +480,56 @@ main
     text-align: left;
 }
 
+.brugernavn-form {
+    margin-bottom: 28px;
+}
+
+.brugernavn-form label,
 .ommig-form label {
     color: var(--tekst);
     font-size: 14px;
     font-weight: 600;
 }
 
+.brugernavn-felt,
 .om-mig-felt {
     width: 100%;
-    height: 130px;
     box-sizing: border-box;
-    padding: 14px 16px;
+    padding: 13px 16px;
 
-    background: var(--felt-bg);
+    background: var(--blaa-700);
     color: var(--tekst);
 
-    border: 1px solid var(--kant);
-    border-radius: 14px;
+    border: 1px solid var(--blaa-600);
+    border-radius: 12px;
 
-    resize: vertical;
     font-family: inherit;
     font-size: 15px;
-    line-height: 1.5;
 
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.om-mig-felt {
+    height: 130px;
+    resize: vertical;
+    line-height: 1.5;
 }
 
 .om-mig-felt::placeholder {
     color: var(--tekst-daempet);
 }
 
+.brugernavn-felt:focus,
 .om-mig-felt:focus {
     outline: none;
     border-color: var(--orange);
     box-shadow: 0 0 0 4px rgba(210, 85, 19, 0.25);
+}
+
+.fejl-besked {
+    margin: 0;
+    color: var(--orange-lys);
+    font-size: 14px;
 }
 
 /* ----- Knapper ----- */
@@ -535,17 +545,17 @@ main
     cursor: pointer;
 
     transition: background-color 0.2s ease, transform 0.15s ease,
-                border-color 0.2s ease;
+                border-color 0.2s ease, color 0.2s ease;
 }
 
 .gem-button {
-    background: linear-gradient(135deg, var(--orange-lys), var(--orange));
+    background: var(--orange);
     color: #fff;
     border: none;
 }
 
 .gem-button:hover {
-    background: linear-gradient(135deg, var(--orange), var(--orange-moerk));
+    background: var(--orange-moerk);
 }
 
 .gem-button:active,
@@ -557,7 +567,7 @@ main
     margin-top: 24px;
     background: transparent;
     color: var(--tekst);
-    border: 1px solid var(--kant);
+    border: 1px solid var(--blaa-600);
 }
 
 .rediger-button:hover {
@@ -567,7 +577,7 @@ main
 
 .gem-button:focus-visible,
 .rediger-button:focus-visible {
-    outline: 2px solid #fff;
+    outline: 2px solid var(--tekst);
     outline-offset: 3px;
 }
 
@@ -576,43 +586,8 @@ main
     .profil-container {
         margin-top: 100px;
         padding: 32px 20px 24px;
-        border-radius: 22px;
+        border-radius: 20px;
     }
-}
-
-.brugernavn-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 0 0 28px;
-    text-align: left;
-}
-
-.brugernavn-form label {
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.brugernavn-felt {
-    padding: 13px 16px;
-    background: var(--felt-bg);
-    color: var(--tekst);
-    border: 1px solid var(--kant);
-    border-radius: 12px;
-    font-family: inherit;
-    font-size: 15px;
-}
-
-.brugernavn-felt:focus {
-    outline: none;
-    border-color: var(--orange);
-    box-shadow: 0 0 0 4px rgba(210, 85, 19, 0.25);
-}
-
-.fejl-besked {
-    margin: 0;
-    color: #ff7b72;
-    font-size: 14px;
 }
 /* ===== FORUM ===== */
 
