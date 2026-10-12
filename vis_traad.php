@@ -1,4 +1,3 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php
 require "database.php";
 session_start();
@@ -53,6 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION["bruger_id"])) {    
 <html lang="da">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Tråd</title>
 </head>
