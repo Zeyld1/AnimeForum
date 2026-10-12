@@ -875,6 +875,23 @@ main
     color: rgb(180, 180, 180);
 }
 
+.traad-hoved {
+    display: flex;
+    gap: 20px;
+}
+
+.traad-indhold {
+    flex: 1;
+}
+
+.traad-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgb(210, 85, 19);
+}
+
 
 /* =====================================================
    RESPONSIVT DESIGN

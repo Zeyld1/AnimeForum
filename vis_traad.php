@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php
 require "database.php";
 session_start();
@@ -18,6 +19,23 @@ $stmt->bind_param("i", $traad_id);
 $stmt->execute();
 $result = $stmt->get_result();
 $traad = $result->fetch_assoc();
+
+// Henter billedet fra den bruger der har lavet tråden
+$stmt_billede = $conn->prepare("SELECT Profilbillede FROM ForumUsers WHERE id = ?");
+$stmt_billede->bind_param("i", $traad["bruger_id"]);
+$stmt_billede->execute();
+$billede_result = $stmt_billede->get_result();
+$forfatter = $billede_result->fetch_assoc();
+
+// Hvis brugeren ikke har et billede, bruger vi standardbilledet
+if (!empty($forfatter["Profilbillede"]))
+{
+    $traad_avatar = $forfatter["Profilbillede"];
+}
+else
+{
+    $traad_avatar = "images/Ikon.png";
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION["bruger_id"])) {    $kommentar_indhold = $_POST["indhold"];
     $bruger_id = $_SESSION["bruger_id"];
@@ -44,19 +62,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION["bruger_id"])) {    
     <main>
         <div class="traad-side">
 
-            <div class="traad-hoved">
-                <h1><?php echo htmlspecialchars($traad["titel"]); ?></h1>
-                <p class="traad-forfatter">Af <?php echo htmlspecialchars($traad["Brugernavn"] ?? "Slettet bruger"); ?></p>
-                <p><?php echo htmlspecialchars($traad["indhold"]); ?></p>
+             <div class="traad-hoved">
 
-                <?php if (!empty($traad["kategorier"])) { ?>
-                    <div class="traad-kategorier">
-                        <?php foreach (explode(", ", $traad["kategorier"]) as $navn) { ?>
-                            <span class="kategori-tag"><?php echo htmlspecialchars($navn); ?></span>
-                        <?php } ?>
-                    </div>
+    <img src="<?php echo htmlspecialchars($traad_avatar); ?>" class="traad-avatar">
+
+    <div class="traad-indhold">
+        <h1><?php echo htmlspecialchars($traad["titel"]); ?></h1>
+        <p class="traad-forfatter">Af <?php echo htmlspecialchars($traad["Brugernavn"] ?? "Slettet bruger"); ?></p>
+        <p><?php echo htmlspecialchars($traad["indhold"]); ?></p>
+
+        <?php if (!empty($traad["kategorier"])) { ?>
+            <div class="traad-kategorier">
+                <?php foreach (explode(", ", $traad["kategorier"]) as $navn) { ?>
+                    <span class="kategori-tag"><?php echo htmlspecialchars($navn); ?></span>
                 <?php } ?>
             </div>
+        <?php } ?>
+    </div>
+
+</div>
 
             <?php if (isset($_SESSION["bruger_id"])) { ?>
 
