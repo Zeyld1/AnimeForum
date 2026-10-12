@@ -880,6 +880,10 @@ main
     gap: 20px;
 }
 
+.traad .traad-hoved {
+    border-left: none;
+}
+
 .traad-indhold {
     flex: 1;
 }
