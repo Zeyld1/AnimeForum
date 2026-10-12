@@ -144,58 +144,111 @@ $result = $stmt->get_result();
 
 <script>
 
+// Finder søgefeltet ud fra id="forum-search"
+// Vi gemmer det i variablen searchInput, så vi kan bruge det senere
 const searchInput = document.getElementById("forum-search");
+
+// Finder boksen hvor søgeresultaterne skal vises
 const forslagBoks = document.getElementById("search-forslag");
 
-// Finder alle tråde på forumsiden
+
+// Finder alle forumtråde på siden
+// document.querySelectorAll(".traad") betyder:
+// Find alle HTML-elementer som har class="traad"
 const traade = document.querySelectorAll(".traad");
 
+
+// addEventListener lytter efter noget der sker på søgefeltet
+// "input" betyder at funktionen kører hver gang brugeren skriver eller sletter et tegn
 searchInput.addEventListener("input", function()
 {
-    // Det brugeren skriver
+
+    // Henter det som brugeren har skrevet i søgefeltet
+    // toLowerCase() gør teksten til små bogstaver
+    // Det gør det nemmere at sammenligne tekst
+    // Fx "Naruto" og "naruto" bliver behandlet ens
     const soegning = searchInput.value.toLowerCase();
 
-    // Tømmer gamle forslag
+
+    // Fjerner gamle søgeresultater
+    // Ellers ville nye forslag bare blive lagt oveni de gamle
     forslagBoks.innerHTML = "";
 
-    // Hvis søgefeltet er tomt, viser vi ingen forslag
+
+    // Hvis brugeren ikke har skrevet noget i søgefeltet
     if (soegning == "")
     {
+        // Skjuler boksen med søgeresultater
         forslagBoks.style.display = "none";
+
+        // Stopper funktionen her
         return;
     }
 
+
+    // Går igennem alle forumtråde én efter én
     traade.forEach(function(traad)
     {
-        // Finder titlen på tråden
+
+        // Inde i den aktuelle tråd finder vi linket i <h2>
+        // Det er her trådens titel står
         const link = traad.querySelector("h2 a");
 
+
+        // Henter teksten fra linket
+        // Fx "Bedste Anime 2026"
+        // og laver den om til små bogstaver
         const titel = link.textContent.toLowerCase();
 
-        // Tjekker om titlen indeholder det brugeren skriver
+
+        // includes() undersøger om titlen indeholder det brugeren har skrevet
+        //
+        // Eksempel:
+        // titel = "bedste anime 2026"
+        // soegning = "anime"
+        //
+        // Så bliver resultatet true
         if (titel.includes(soegning))
         {
+
+            // Opretter et nyt <a>-element med JavaScript
+            // Dette bliver et klikbart søgeresultat
             const forslag = document.createElement("a");
 
+
+            // Giver søgeresultatet samme link som den rigtige forumtråd
+            // Hvis man klikker på forslaget, åbnes tråden
             forslag.href = link.href;
+
+
+            // Sætter teksten i søgeresultatet
+            // Vi bruger den originale titel, så store og små bogstaver beholdes
             forslag.textContent = link.textContent;
 
+
+            // Lægger det nye søgeresultat ind i boksen
             forslagBoks.appendChild(forslag);
         }
     });
 
-    // Hvis der blev fundet noget, viser vi boksen
+
+    // children.length fortæller hvor mange søgeresultater
+    // der er blevet lagt ind i forslagBoks
     if (forslagBoks.children.length > 0)
     {
+        // Hvis der er mindst ét resultat,
+        // viser vi boksen med søgeresultater
         forslagBoks.style.display = "flex";
     }
     else
     {
+        // Hvis ingen tråde matcher søgningen,
+        // skjuler vi boksen
         forslagBoks.style.display = "none";
     }
+
 });
 
 </script>
-
 </body>
 </html>
