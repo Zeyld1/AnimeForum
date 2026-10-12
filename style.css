@@ -896,6 +896,131 @@ main
     border: 2px solid rgb(210, 85, 19);
 }
 
+.forum-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+
+.search-container {
+    position: relative;
+
+    width: 260px;
+}
+
+
+.search-box {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+}
+
+
+.search-icon {
+    position: absolute;
+
+    left: 14px;
+
+    font-size: 16px;
+
+    pointer-events: none;
+
+    transition: opacity 0.2s ease;
+}
+
+
+#forum-search {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 12px 15px 12px 42px;
+
+    background-color: #152233;
+    color: white;
+
+    border: 1px solid #26395a;
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+
+#forum-search::placeholder {
+    color: #aaaaaa;
+}
+
+
+/* Når man klikker på feltet forsvinder teksten */
+#forum-search:focus::placeholder {
+    color: transparent;
+}
+
+
+/* Søgeikonet forsvinder også */
+.search-box:focus-within .search-icon {
+    opacity: 0;
+}
+
+
+/* Når ikonet er væk behøver teksten ikke så meget plads til venstre */
+#forum-search:focus {
+    padding-left: 15px;
+
+    border-color: rgb(210, 85, 19);
+}
+
+
+.search-forslag {
+    display: none;
+    flex-direction: column;
+
+    position: absolute;
+
+    top: 50px;
+    left: 0;
+
+    width: 100%;
+
+    background-color: #152233;
+
+    border: 1px solid #26395a;
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    z-index: 20;
+}
+
+
+.search-forslag a {
+    padding: 12px 15px;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-bottom: 1px solid #26395a;
+}
+
+
+.search-forslag a:last-child {
+    border-bottom: none;
+}
+
+
+.search-forslag a:hover {
+    background-color: #26395a;
+
+    color: rgb(210, 85, 19);
+}
+
 
 /* =====================================================
    RESPONSIVT DESIGN
