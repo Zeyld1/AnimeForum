@@ -103,11 +103,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION["bruger_id"])) {    
 
             <?php
             $stmt3 = $conn->prepare("
-                SELECT Kommentar.indhold, ForumUsers.Brugernavn, ForumUsers.Profilbillede
+                SELECT Kommentar.indhold, Kommentar.oprettet, ForumUsers.Brugernavn, ForumUsers.Profilbillede
                 FROM Kommentar
                 JOIN ForumUsers ON Kommentar.bruger_id = ForumUsers.id
                 WHERE Kommentar.traad_id = ?
-            ");
+                ORDER BY Kommentar.oprettet ASC
+             ");
+
             $stmt3->bind_param("i", $traad_id);
             $stmt3->execute();
             $kommentarer = $stmt3->get_result();
@@ -136,6 +138,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION["bruger_id"])) {    
             <strong>
                 <?php echo htmlspecialchars($k["Brugernavn"]); ?>
             </strong>
+            
+            <span class="kommentar-dato">
+                <?php echo date("d/m/Y H:i", strtotime($k["oprettet"])); ?>
+            </span>
 
             <p>
                 <?php echo htmlspecialchars($k["indhold"]); ?>
