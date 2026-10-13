@@ -29,12 +29,10 @@ if (
 
     move_uploaded_file($midlertidig_fil, $sti);
 
-    // Gemmer stien til billedet i databasen
-    $sql = "UPDATE ForumUsers
-            SET Profilbillede = '$sti'
-            WHERE id = '$bruger_id'";
-
-    $conn->query($sql);
+    // Gemmer stien til billedet i databasen (med prepare, så filnavnet ikke kan snyde SQL)
+    $stmt = $conn->prepare("UPDATE ForumUsers SET Profilbillede = ? WHERE id = ?");
+    $stmt->bind_param("si", $sti, $bruger_id);
+    $stmt->execute();
 }
 
 // Hvis brugeren har trykket på Gem-knappen
