@@ -68,7 +68,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION["bruger_id"])) {    
 
     <div class="traad-indhold">
         <h1><?php echo htmlspecialchars($traad["titel"]); ?></h1>
-        <p class="traad-forfatter">Af <?php echo htmlspecialchars($traad["Brugernavn"] ?? "Slettet bruger"); ?></p>
+        <p class="traad-forfatter">
+        Af <?php echo htmlspecialchars($traad["Brugernavn"] ?? "Slettet bruger"); ?>
+        den <?php echo date("d/m/Y H:i", strtotime($traad["oprettet"])); ?>
+        </p>
         <p><?php echo htmlspecialchars($traad["indhold"]); ?></p>
 
         <?php if (!empty($traad["kategorier"])) { ?>
