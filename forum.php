@@ -5,8 +5,7 @@ $kategorier = $conn->query("SELECT id, navn FROM Kategorier");
 $valgt = $_GET["kategori"] ?? "";
 
 $sql = "
-    SELECT Traade.id, Traade.titel, Traade.indhold,
-       ForumUsers.Brugernavn,
+SELECT Traade.id, Traade.titel, Traade.indhold, Traade.oprettet, ForumUsers.Brugernavn,
        ForumUsers.Profilbillede,
        GROUP_CONCAT(Kategorier.navn SEPARATOR ', ') AS kategorier
     FROM Traade
@@ -19,7 +18,7 @@ if ($valgt !== "") {
     $sql .= " WHERE Traade.id IN (SELECT traad_id FROM TraadKategorier WHERE kategori_id = ?)";
 }
 
-$sql .= " GROUP BY Traade.id, ForumUsers.Brugernavn, ForumUsers.Profilbillede ORDER BY Traade.id DESC";
+$sql .= " GROUP BY Traade.id, Traade.oprettet, ForumUsers.Brugernavn, ForumUsers.Profilbillede ORDER BY Traade.id DESC";
 $stmt = $conn->prepare($sql);
 if ($valgt !== "") {
     $stmt->bind_param("i", $valgt);
@@ -118,6 +117,7 @@ $result = $stmt->get_result();
 
             <p class="traad-forfatter">
                 Af <?php echo htmlspecialchars($row["Brugernavn"] ?? "Slettet bruger"); ?>
+                den <?php echo date("d/m/Y H:i", strtotime($row["oprettet"])); ?>
             </p>
 
             <p>
