@@ -1130,42 +1130,9 @@ main
  
 /* #endregion */
 
-/* ===== Header i AniList-stil (ikke på forsiden) =====
-   Erstat den gamle blok nederst i style.css med denne.
-   Alle regler starter med body:not(.forside), så de gælder
-   på alle sider UNDTAGEN dem, hvor <body> har class="forside". */
+/* ===== Header i AniList-stil (bagrunds farven på header) =====
 
 /* Lidt lysere blå header, uden gennemsigtighed */
-body:not(.forside) .top-header {
-    background-color: #151f2e;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
-}
-
-/* Menu-linkene er dæmpede grå-blå, ligesom hos AniList */
-body:not(.forside) .menu-tekst {
-    align-items: center;
-}
-
-body:not(.forside) .menu-tekst a,
-body:not(.forside) .profil-link {
-    color: #9fadbd;
-    transition: color 0.2s ease;
-}
-
-/* Hvid når musen er over */
-body:not(.forside) .menu-tekst a:hover,
-body:not(.forside) .profil-link:hover {
-    color: #ffffff;
-}
-
-/* "Opret Bruger" bliver en orange knap (som "Sign Up" hos AniList) */
-body:not(.forside) .menu-tekst a[href="signup.php"] {
-    background-color: rgb(210, 85, 19);
-    color: #ffffff;
-    padding: 10px 18px;
-    border-radius: 6px;
-}
-
 body:not(.forside) .top-header {
     background-color: #151f2e;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
