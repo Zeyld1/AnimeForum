@@ -100,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION["bruger_id"])) {    
 
             <?php
             $stmt3 = $conn->prepare("
-                SELECT Kommentar.indhold, ForumUsers.Brugernavn
+                SELECT Kommentar.indhold, ForumUsers.Brugernavn, ForumUsers.Profilbillede
                 FROM Kommentar
                 JOIN ForumUsers ON Kommentar.bruger_id = ForumUsers.id
                 WHERE Kommentar.traad_id = ?
@@ -110,12 +110,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION["bruger_id"])) {    
             $kommentarer = $stmt3->get_result();
 
             while ($k = $kommentarer->fetch_assoc()) {
-            ?>
-                <div class="kommentar">
-                    <strong><?php echo htmlspecialchars($k["Brugernavn"]); ?></strong>
-                    <p><?php echo htmlspecialchars($k["indhold"]); ?></p>
-                </div>
-            <?php } ?>
+
+    if (!empty($k["Profilbillede"]))
+    {
+        $kommentar_avatar = $k["Profilbillede"];
+    }
+    else
+    {
+        $kommentar_avatar = "images/Ikon.png";
+    }
+?>
+
+    <div class="kommentar">
+
+        <img
+            src="<?php echo htmlspecialchars($kommentar_avatar); ?>"
+            class="kommentar-avatar"
+            alt="Profilbillede"
+        >
+
+        <div class="kommentar-indhold">
+            <strong>
+                <?php echo htmlspecialchars($k["Brugernavn"]); ?>
+            </strong>
+
+            <p>
+                <?php echo htmlspecialchars($k["indhold"]); ?>
+            </p>
+        </div>
+
+    </div>
+
+<?php } ?>
 
         </div>
     </main>
