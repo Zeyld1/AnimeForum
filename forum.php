@@ -63,7 +63,12 @@ $result = $stmt->get_result();
     <div class="search-container">
 
         <div class="search-box">
-            <span class="search-icon">🔍</span>
+            <span class="search-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="11" cy="11" r="7"></circle>
+                  <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+             </svg>
+            </span>
 
             <input
                 type="text"
