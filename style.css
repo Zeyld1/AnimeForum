@@ -1051,6 +1051,85 @@ main
     color: rgb(210, 85, 19);
 }
 
+/* #region 12b. Min profil (oversigt med tråde) */
+ 
+.minprofil-side {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 110px 20px 50px 20px;   /* 110px øverst pga. headeren */
+ 
+    font-family: Arial, sans-serif;
+}
+ 
+/* Kortet øverst med billede, navn og knap */
+.minprofil-kort {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+ 
+    background-color: #152233;
+    padding: 28px;
+    margin-bottom: 35px;
+ 
+    border-top: 3px solid rgb(210, 85, 19);
+    border-radius: 12px;
+}
+ 
+.minprofil-avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgb(210, 85, 19);
+    flex-shrink: 0;
+}
+ 
+.minprofil-info {
+    flex: 1;
+}
+ 
+.minprofil-info h1 {
+    margin: 0 0 8px 0;
+}
+ 
+.minprofil-ommig {
+    margin: 0 0 18px 0;
+    color: #aaaaaa;
+    line-height: 1.5;
+}
+ 
+/* "Rediger profil"-knappen */
+.minprofil-knap {
+    display: inline-block;
+ 
+    background-color: rgb(210, 85, 19);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+ 
+    padding: 10px 20px;
+    border-radius: 6px;
+}
+ 
+.minprofil-knap:hover {
+    background-color: rgb(180, 70, 10);
+}
+ 
+.minprofil-overskrift {
+    color: rgb(210, 85, 19);
+    margin: 0 0 18px 0;
+}
+ 
+/* Viser kun de første 2 linjer af trådens tekst */
+.traad-uddrag {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+ 
+/* #endregion */
+ 
 
 /* =====================================================
    RESPONSIVT DESIGN
@@ -1102,6 +1181,15 @@ img {
 
 /* ----- Mobil og små tablets ----- */
 @media (max-width: 768px) {
+
+      .minprofil-side {
+        padding: 130px 16px 40px 16px;
+    }
+ 
+    .minprofil-kort {
+        flex-direction: column;
+        text-align: center;
+    }
 
     /* Header: logo, menu og profil-link lægger sig i række og kan ombrydes */
     .top-header {
