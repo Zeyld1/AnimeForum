@@ -43,12 +43,15 @@ if (isset($_POST["gem_ommig"]))
     // Vi gemmer det som brugeren har skrevet
     $OmMig = $_POST["OmMig"];
 
-    // Vi opdaterer OmMig i databasen
-    $sql = "UPDATE ForumUsers
-            SET OmMig = '$OmMig'
-            WHERE id = '$bruger_id'";
+    // Vi bruger prepare() med ? som pladsholder, så brugerens tekst
+    // aldrig bliver en del af selve SQL-sætningen (beskytter mod SQL injection)
+    $stmt = $conn->prepare("UPDATE ForumUsers SET OmMig = ? WHERE id = ?");
 
-    $conn->query($sql);
+    // "si" betyder: første værdi er tekst (string), anden er heltal (integer)
+    $stmt->bind_param("si", $OmMig, $bruger_id);
+
+    // Kører opdateringen i databasen
+    $stmt->execute();
 }
 
 $fejl = "";
