@@ -1,7 +1,7 @@
 <header class="top-header">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <a href="redigerprofil.php" class="profil-link">Profil</a>
+    <a href="minprofil.php" class="profil-link">Profil</a>
 
     <h1><a href="index.php">AniMecca </a></h1>
 
