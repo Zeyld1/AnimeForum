@@ -18,7 +18,7 @@
 
         <a href="privacy.php">Privatlivspolitik</a>
         <br>
-        <a href="rules.php">Regler</a>
+        <a href="regler.php">Regler</a>
     </div>
 
 </footer>
