@@ -16,7 +16,7 @@
         <h3>Information</h3>
         <p>Sidst opdateret: <?php echo date("d. F Y"); ?></p>
 
-        <a href="privacy.php">Privatlivspolitik</a>
+        <a href="privatliv.php">Privatlivspolitik</a>
         <br>
         <a href="regler.php">Regler</a>
     </div>
