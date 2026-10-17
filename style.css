@@ -1313,3 +1313,48 @@ img {
     font-size: 13px;
     margin-left: 8px;
 }
+
+/* ===== Svar på kommentarer =====
+   Sæt hele denne blok HELT NEDERST i style.css. */
+
+/* Svarene står rykket ind under hovedkommentaren, med en streg til venstre */
+.svar-liste {
+    margin-left: 40px;
+    padding-left: 15px;
+    border-left: 2px solid #26395a;
+}
+
+/* Lidt mindre billede ved svar */
+.svar-liste .kommentar-avatar {
+    width: 38px;
+    height: 38px;
+}
+
+/* "Svar"-knappen under en kommentar */
+.svar-boks {
+    margin-top: 10px;
+}
+
+.svar-boks summary {
+    color: rgb(210, 85, 19);
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.svar-boks summary:hover {
+    color: rgb(238, 116, 48);
+}
+
+/* Formularen bruger din eksisterende .kommentar-form, vi justerer bare afstanden */
+.svar-boks .kommentar-form {
+    margin: 12px 0 0 0;
+}
+
+/* Mobil: mindre indrykning */
+@media (max-width: 768px) {
+    .svar-liste {
+        margin-left: 14px;
+        padding-left: 10px;
+    }
+}
