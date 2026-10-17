@@ -90,10 +90,12 @@ if (isset($_POST["gem_brugernavn"]))
 }
 
 
-// Henter den bruger fra databasen som er logget ind
-$sql = "SELECT * FROM ForumUsers WHERE id = '$bruger_id'";
 
-$result = $conn->query($sql);
+// Henter brugeren med prepare(), så id'et ikke sættes direkte ind i SQL
+$stmt = $conn->prepare("SELECT * FROM ForumUsers WHERE id = ?");
+$stmt->bind_param("i", $bruger_id);
+$stmt->execute();
+$result = $stmt->get_result();
 
 
 // Gemmer brugerens oplysninger
