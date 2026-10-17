@@ -206,10 +206,6 @@ else
 
             </form>
 
-            <button type="button" class="rediger-button">
-                Rediger profil
-            </button>
-
         </div>
 
     </main>

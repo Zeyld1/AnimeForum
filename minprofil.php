@@ -76,6 +76,7 @@ $antal_traade = $traade->num_rows;
                         }
                         ?>
                     </p>
+                    <a href="redigerprofil.php" class="minprofil-knap">Rediger profil</a>
                 </div>
 
             </div>
