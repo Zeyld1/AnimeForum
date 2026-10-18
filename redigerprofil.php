@@ -16,7 +16,8 @@ if (!isset($_SESSION["bruger_id"]))
 $bruger_id = $_SESSION["bruger_id"];
 
 // Hvis brugeren har valgt et profilbillede
-if (
+if 
+(
     isset($_FILES["Profilbillede"]) &&
     $_FILES["Profilbillede"]["error"] == 0
 )
