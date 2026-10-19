@@ -618,6 +618,8 @@ main
     color: #b0b8c4;
     text-decoration: none;
     padding: 9px 12px;
+    text-transform: capitalize;
+
 }
 
 .sidebar-menu a:hover {
