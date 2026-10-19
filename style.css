@@ -618,6 +618,8 @@ main
     color: #b0b8c4;
     text-decoration: none;
     padding: 9px 12px;
+    text-transform: capitalize;
+
 }
 
 .sidebar-menu a:hover {
@@ -1357,4 +1359,14 @@ img {
         margin-left: 14px;
         padding-left: 10px;
     }
+}
+
+.kommentar-indhold {
+    min-width: 0;
+}
+
+.kommentar p,
+.traad-indhold p,
+.traad-hoved p {
+    overflow-wrap: anywhere;
 }
