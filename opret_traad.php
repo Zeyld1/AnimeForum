@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <form method="POST" action="opret_traad.php" class="opret-form">
                 <label for="titel">Titel</label>
-                <input type="text" name="titel" id="titel" required>
+                <input type="text" name="titel" id="titel" maxlength="100" required>
 
                 <label for="kategori">Kategori (hold Ctrl nede for at vælge flere)</label>
                 <select name="kategori_id[]" id="kategori" multiple required>
