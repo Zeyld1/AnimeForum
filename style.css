@@ -1360,3 +1360,13 @@ img {
         padding-left: 10px;
     }
 }
+
+.kommentar-indhold {
+    min-width: 0;
+}
+
+.kommentar p,
+.traad-indhold p,
+.traad-hoved p {
+    overflow-wrap: anywhere;
+}
