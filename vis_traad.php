@@ -103,7 +103,9 @@ else
 // ---------- NY KOMMENTAR ELLER NYT SVAR ----------
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION["bruger_id"]))
 {
-    $kommentar_indhold = $_POST["indhold"];
+    // trim() fjerner mellemrum i enderne
+    $kommentar_indhold = trim($_POST["indhold"]);
+
     $bruger_id = $_SESSION["bruger_id"];
     $kommentar_traad_id = $_POST["traad_id"];
 
@@ -116,9 +118,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION["bruger_id"]))
         $svar_til_id = $_POST["svar_til_id"];
     }
 
+    // Serveren tjekker selv, at kommentaren hverken er tom eller for lang
+// (mb_strlen tæller tegn korrekt, også æ, ø og å)
+if ($kommentar_indhold !== "" && mb_strlen($kommentar_indhold) <= 1000)
+{
     $stmt2 = $conn->prepare("INSERT INTO Kommentar (traad_id, bruger_id, indhold, svar_til_id) VALUES (?, ?, ?, ?)");
     $stmt2->bind_param("iisi", $kommentar_traad_id, $bruger_id, $kommentar_indhold, $svar_til_id);
     $stmt2->execute();
+}
 
     header("Location: vis_traad.php?id=" . $kommentar_traad_id);
     exit();
