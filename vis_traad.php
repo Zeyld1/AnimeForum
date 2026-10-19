@@ -51,7 +51,7 @@ function skriv_kommentar($k, $hoved_id)
                     <form method="POST" class="kommentar-form">
                         <input type="hidden" name="traad_id" value="<?php echo (int)$_GET["id"]; ?>">
                         <input type="hidden" name="svar_til_id" value="<?php echo (int)$hoved_id; ?>">
-                        <textarea name="indhold" rows="3" placeholder="Skriv et svar..." required></textarea>
+                        <textarea name="indhold" rows="3" maxlength="1000" placeholder="Skriv et svar..." required></textarea>
                         <button type="submit">Send svar</button>
                     </form>
                 </details>
@@ -165,7 +165,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION["bruger_id"]))
 
                 <form method="POST" class="kommentar-form">
                     <input type="hidden" name="traad_id" value="<?php echo (int)$traad["id"]; ?>">
-                    <textarea name="indhold" rows="4" placeholder="Skriv en kommentar..." required></textarea>
+                    <textarea name="indhold" rows="4" maxlength="1000" placeholder="Skriv en kommentar..." required></textarea>
                     <button type="submit">Send kommentar</button>
                 </form>
 
