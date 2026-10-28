@@ -1,3 +1,4 @@
+<!-- Footeren. Indsættes på alle sider med include 'footer.php'. -->
 <footer class="footer">
 
     <div class="footer-section">
@@ -14,6 +15,7 @@
 
     <div class="footer-section">
         <h3>Information</h3>
+        <!-- date() skriver dagens dato (ikke hvornår siden sidst blev ændret). -->
         <p>Sidst opdateret: <?php echo date("d. F Y"); ?></p>
 
         <a href="privatliv.php">Privatlivspolitik</a>

@@ -10,10 +10,12 @@
 
 <body class="forside">
 
+<!-- Menuen (header.php) indsættes her. -->
 <?php include 'header.php'; ?>
 
 <main>
 
+    <!-- Forsidens velkomstområde med billede (CSS: .hero). -->
     <section class="hero">
 
         <h1>Velkommen til AniMecca</h1>
@@ -23,6 +25,7 @@
             og del dine meninger med andre animefans.
         </p>
 
+        <!-- Knap til signup.php. -->
         <a href="signup.php" class="hero-button">Opret bruger</a>
 
     </section>

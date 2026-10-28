@@ -1,9 +1,17 @@
 <?php
+// session_start() åbner sessionen. Så kan siden (og header.php) se, om brugeren er logget ind.
 session_start();
+// Henter database.php, som laver forbindelsen $conn til MySQL-databasen.
 require "database.php";
+// Henter alle kategorier fra databasen. De bruges til menuen i sidebaren.
 $kategorier = $conn->query("SELECT id, navn FROM Kategorier");
+// Læser ?kategori=... fra adressen. Er der ingen, bliver $valgt tom (""), og alle tråde vises.
+// ?? "" betyder: brug "" som standard, hvis der ikke står noget i adressen.
 $valgt = $_GET["kategori"] ?? "";
 
+// Her bygger vi SQL-sætningen op som tekst. Vi henter hver tråd sammen med forfatterens brugernavn og profilbillede.
+// LEFT JOIN betyder: tråden vises også, selvom brugeren eller kategorierne mangler.
+// GROUP_CONCAT samler trådens kategorier i én tekst, fx "anime, manga".
 $sql = "
 SELECT Traade.id, Traade.titel, Traade.indhold, Traade.oprettet, ForumUsers.Brugernavn,
        ForumUsers.Profilbillede,
@@ -14,16 +22,24 @@ SELECT Traade.id, Traade.titel, Traade.indhold, Traade.oprettet, ForumUsers.Brug
     LEFT JOIN Kategorier ON TraadKategorier.kategori_id = Kategorier.id
 ";
 
+// Er der valgt en kategori, tilføjer vi et filter: kun tråde, der er koblet til den kategori i TraadKategorier.
+// ? er en pladsholder, som får sin værdi længere nede (bind_param).
 if ($valgt !== "") {
     $sql .= " WHERE Traade.id IN (SELECT traad_id FROM TraadKategorier WHERE kategori_id = ?)";
 }
 
+// GROUP BY gør, at hver tråd kun vises én gang (ellers kommer der én række pr. kategori).
+// ORDER BY Traade.id DESC betyder, at den nyeste tråd står øverst.
 $sql .= " GROUP BY Traade.id, Traade.oprettet, ForumUsers.Brugernavn, ForumUsers.Profilbillede ORDER BY Traade.id DESC";
+// prepare() gør SQL'en klar. Værdierne sendes bagefter for sig selv, så brugerens input aldrig bliver til SQL-kode (beskytter mod SQL injection).
 $stmt = $conn->prepare($sql);
+// Har SQL'en et ?, skal det have en værdi. "i" betyder, at værdien er et heltal (kategoriens id).
 if ($valgt !== "") {
     $stmt->bind_param("i", $valgt);
 }
+// Kører forespørgslen mod databasen.
 $stmt->execute();
+// Gemmer resultatet (alle tråde), så vi kan løbe dem igennem nede i HTML'en med fetch_assoc().
 $result = $stmt->get_result();
 ?>
 
@@ -36,16 +52,20 @@ $result = $stmt->get_result();
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Menuen (header.php) indsættes her. -->
     <?php include 'header.php'; ?>
 
 <main>
     <div class="forum-layout">
 
+        <!-- Sidebar til venstre: knap til at oprette tråd og kategorilinks. -->
         <aside class="sidebar">
             <a href="opret_traad.php" class="knap">Opret tråd</a>
 
             <nav class="sidebar-menu">
+                <!-- "Alle" fjerner filteret, så alle tråde vises. -->
                 <a href="forum.php">Alle</a>
+                <!-- Laver ét link pr. kategori fra databasen. (int) sikrer, at id'et er et tal, og htmlspecialchars() beskytter mod XSS. -->
                 <?php while ($kat = $kategorier->fetch_assoc()) { ?>
                     <a href="forum.php?kategori=<?php echo (int)$kat["id"]; ?>">
                         <?php echo htmlspecialchars($kat["navn"]); ?>
@@ -54,11 +74,13 @@ $result = $stmt->get_result();
             </nav>
         </aside>
 
+         <!-- Højre side: søgefelt og trådene. -->
          <section class="forum-indhold">
             <div class="forum-top">
 
     <h1>Forum</h1>
 
+    <!-- Søgefeltet. Selve søgningen er JavaScript nederst på siden. -->
     <div class="search-container">
 
         <div class="search-box">
@@ -83,10 +105,12 @@ $result = $stmt->get_result();
 
 </div>
 
+            <!-- Går igennem alle tråde. fetch_assoc() henter én række ad gangen, indtil der ikke er flere. -->
             <?php while ($row = $result->fetch_assoc()) { ?>
 
             <?php
 
+                      // Har brugeren ikke et profilbillede, bruger vi standardbilledet (images/Ikon.png).
                       if (!empty($row["Profilbillede"]))
                          {
                             $avatar = $row["Profilbillede"];
@@ -97,6 +121,7 @@ $result = $stmt->get_result();
                          }
 
 ?>
+                <!-- Ét tråd-kort. Alt fra databasen vises med htmlspecialchars() for at beskytte mod XSS. -->
                 <div class="traad">
 
     <div class="traad-hoved">
@@ -116,7 +141,9 @@ $result = $stmt->get_result();
             </h2>
 
             <p class="traad-forfatter">
+                <!-- ?? betyder: findes brugernavnet ikke (brugeren er slettet), vises "Slettet bruger". -->
                 Af <?php echo htmlspecialchars($row["Brugernavn"] ?? "Slettet bruger"); ?>
+                <!-- strtotime() + date() laver tidspunktet fra databasen om til fx 22/10/2026 14:30. -->
                 den <?php echo date("d/m/Y H:i", strtotime($row["oprettet"])); ?>
             </p>
 
@@ -124,6 +151,7 @@ $result = $stmt->get_result();
                 <?php echo htmlspecialchars($row["indhold"]); ?>
             </p>
 
+            <!-- Vis kun kategorier, hvis tråden har nogen. explode() deler teksten "anime, manga" op i en liste, og foreach laver ét tag pr. kategori. -->
             <?php if (!empty($row["kategorier"])) { ?>
                 <div class="traad-kategorier">
                     <?php foreach (explode(", ", $row["kategorier"]) as $navn) { ?>
@@ -147,6 +175,7 @@ $result = $stmt->get_result();
 
 <?php include 'footer.php'; ?>
 
+<!-- JavaScript til søgefeltet. Kører i browseren (ikke på serveren) og søger kun i trådenes titler. -->
 <script>
 
 // Finder søgefeltet ud fra id="forum-search"
