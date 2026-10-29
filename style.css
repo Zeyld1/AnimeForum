@@ -1143,8 +1143,6 @@ body:not(.forside) .top-header {
 
 /* =====================================================
    RESPONSIVT DESIGN
-   Sæt denne blok HELT NEDERST i style.css, så den kan
-   overskrive de eksisterende regler.
    ===================================================== */
 
 /* ----- Gælder alle skærme: fleksible størrelser ----- */
@@ -1316,8 +1314,7 @@ img {
     margin-left: 8px;
 }
 
-/* ===== Svar på kommentarer =====
-   Sæt hele denne blok HELT NEDERST i style.css. */
+
 
 /* Svarene står rykket ind under hovedkommentaren, med en streg til venstre */
 .svar-liste {
@@ -1348,7 +1345,7 @@ img {
     color: rgb(238, 116, 48);
 }
 
-/* Formularen bruger din eksisterende .kommentar-form, vi justerer bare afstanden */
+
 .svar-boks .kommentar-form {
     margin: 12px 0 0 0;
 }
